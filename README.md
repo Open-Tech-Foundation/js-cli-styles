@@ -1,6 +1,6 @@
 # @open-tech-world/es-cli-styles
 
-> Description
+> Add CLI styles to text.
 
 ## Installation
 

@@ -1,12 +1,19 @@
 {
   "name": "@open-tech-world/es-cli-styles",
   "version": "0.1.0",
-  "description": "",
-  "keywords": [],
+  "description": "Add CLI styles to text.",
+  "keywords": [
+    "cli",
+    "style",
+    "string",
+    "text",
+    "color",
+    "colour"
+  ],
   "author": {
     "name": "Thanga Ganapathy",
     "email": "ganapathy888@gmail.com",
-    "url": ""
+    "url": "https://thanga-ganapathy.github.io"
   },
   "license": "MIT",
   "homepage": "",
@@ -35,8 +42,8 @@
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.5",
     "@types/jest": "^26.0.24",
-    "@typescript-eslint/eslint-plugin": "^4.28.5",
-    "@typescript-eslint/parser": "^4.28.5",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",

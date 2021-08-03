@@ -18,11 +18,40 @@ const standardColors: Record<string, string> = {
   white: '255;255;255',
 };
 
-function applyStyles(str: string, color: string): string {
+function addColor(str: string, name: string) {
   const reset = `\x1B[39;2;m`;
-  const ansiColorCode = `\x1B[38;2;${standardColors[color]}m`;
+  const ansiColorCode = `\x1B[38;2;${standardColors[name]}m`;
 
   return ansiColorCode + str + reset;
+}
+
+function addBgColor(str: string, name: string) {
+  const reset = `\x1B[39;2;m`;
+  const ansiColorCode = `\x1B[48;2;${standardColors[name]}m`;
+
+  return ansiColorCode + str + reset;
+}
+
+function applyStyles(str: string, styles: string): string {
+  let styledStr = str;
+  const stylesArr = styles.split('.');
+
+  for (let i = 0; i < stylesArr.length; i++) {
+    const style = stylesArr[i];
+    const colorNames = Object.keys(standardColors);
+
+    if (colorNames.includes(style)) {
+      styledStr = addColor(styledStr, style);
+      continue;
+    }
+
+    if (style.match(/bg/)) {
+      styledStr = addBgColor(styledStr, style.substring(2).toLowerCase());
+      continue;
+    }
+  }
+
+  return styledStr;
 }
 
 export default applyStyles;

@@ -17,19 +17,24 @@ const standardColors: Record<string, string> = {
   silver: '221;221;221',
   white: '255;255;255',
 };
+const reset = `\x1B[39;2;m`;
 
 function addColor(str: string, name: string) {
-  const reset = `\x1B[39;2;m`;
   const ansiColorCode = `\x1B[38;2;${standardColors[name]}m`;
 
   return ansiColorCode + str + reset;
 }
 
 function addBgColor(str: string, name: string) {
-  const reset = `\x1B[39;2;m`;
   const ansiColorCode = `\x1B[48;2;${standardColors[name]}m`;
 
   return ansiColorCode + str + reset;
+}
+
+function addBold(str: string) {
+  const ansiCode = `\x1B[1;38;2m`;
+
+  return ansiCode + str + reset;
 }
 
 function applyStyles(str: string, styles: string): string {
@@ -47,6 +52,11 @@ function applyStyles(str: string, styles: string): string {
 
     if (style.match(/bg/)) {
       styledStr = addBgColor(styledStr, style.substring(2).toLowerCase());
+      continue;
+    }
+
+    if (style === 'bold') {
+      styledStr = addBold(styledStr);
       continue;
     }
   }

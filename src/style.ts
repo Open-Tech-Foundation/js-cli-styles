@@ -1,6 +1,10 @@
 import styleText from './styleText';
 
 function style(str: string): string {
+  if (!str || typeof str !== 'string') {
+    return '';
+  }
+
   let result = str;
   const stylePattern = /(?:~)(?:[^{]+)(?:\{(?:[^~}]+)\})/g;
 

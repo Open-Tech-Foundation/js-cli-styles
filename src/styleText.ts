@@ -17,6 +17,7 @@ function styleText(str: string): string {
 
     if (hasStyle(matchStr)) {
       const arr = splitStr(matchStr);
+
       for (let i = 0; i < arr.length; i++) {
         const text = arr[i];
 
@@ -28,7 +29,11 @@ function styleText(str: string): string {
         styledStr += applyStyles(text, styles);
       }
 
-      return styledStr;
+      return (
+        str.substring(0, regExpresult.index) +
+        styledStr +
+        str.substring(regExp.lastIndex)
+      );
     }
 
     return (

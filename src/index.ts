@@ -1,5 +1,3 @@
-function esCliStyles(): string {
-  return 'Hello World!';
-}
+import style from './style';
 
-export default esCliStyles;
+export { style };

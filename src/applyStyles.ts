@@ -61,6 +61,12 @@ function inverse(str: string) {
   return ansiCode + str + reset;
 }
 
+function strike(str: string) {
+  const ansiCode = `\x1B[9;38;2m`;
+
+  return ansiCode + str + reset;
+}
+
 function applyStyles(str: string, styles: string): string {
   let styledStr = str;
   const stylesArr = styles.split('.');
@@ -106,6 +112,11 @@ function applyStyles(str: string, styles: string): string {
 
     if (style === 'inverse') {
       styledStr = inverse(styledStr);
+      continue;
+    }
+
+    if (style === 'strike') {
+      styledStr = strike(styledStr);
       continue;
     }
   }

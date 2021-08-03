@@ -55,6 +55,12 @@ function addUnderline(str: string) {
   return ansiCode + str + reset;
 }
 
+function inverse(str: string) {
+  const ansiCode = `\x1B[7;38;2m`;
+
+  return ansiCode + str + reset;
+}
+
 function applyStyles(str: string, styles: string): string {
   let styledStr = str;
   const stylesArr = styles.split('.');
@@ -95,6 +101,11 @@ function applyStyles(str: string, styles: string): string {
 
     if (style === 'underline') {
       styledStr = addUnderline(styledStr);
+      continue;
+    }
+
+    if (style === 'inverse') {
+      styledStr = inverse(styledStr);
       continue;
     }
   }

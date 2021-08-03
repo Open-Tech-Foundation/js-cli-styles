@@ -37,18 +37,41 @@ function addBold(str: string) {
   return ansiCode + str + reset;
 }
 
+function addDim(str: string) {
+  const ansiCode = `\x1B[2;38;2m`;
+
+  return ansiCode + str + reset;
+}
+
+function addItalic(str: string) {
+  const ansiCode = `\x1B[3;38;2m`;
+
+  return ansiCode + str + reset;
+}
+
+function addUnderline(str: string) {
+  const ansiCode = `\x1B[4;38;2m`;
+
+  return ansiCode + str + reset;
+}
+
 function applyStyles(str: string, styles: string): string {
   let styledStr = str;
   const stylesArr = styles.split('.');
 
+  const colorNames = Object.keys(standardColors);
+
   for (let i = 0; i < stylesArr.length; i++) {
     const style = stylesArr[i];
-    const colorNames = Object.keys(standardColors);
 
     if (colorNames.includes(style)) {
       styledStr = addColor(styledStr, style);
       continue;
     }
+  }
+
+  for (let i = 0; i < stylesArr.length; i++) {
+    const style = stylesArr[i];
 
     if (style.match(/bg/)) {
       styledStr = addBgColor(styledStr, style.substring(2).toLowerCase());
@@ -57,6 +80,21 @@ function applyStyles(str: string, styles: string): string {
 
     if (style === 'bold') {
       styledStr = addBold(styledStr);
+      continue;
+    }
+
+    if (style === 'dim') {
+      styledStr = addDim(styledStr);
+      continue;
+    }
+
+    if (style === 'italic') {
+      styledStr = addItalic(styledStr);
+      continue;
+    }
+
+    if (style === 'underline') {
+      styledStr = addUnderline(styledStr);
       continue;
     }
   }

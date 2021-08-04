@@ -1,7 +1,7 @@
 <div align="center">
 
 # @open-tech-world/es-cli-styles
-
+[![Build](https://github.com/open-tech-world/es-cli-styles/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-world/es-cli-styles/actions/workflows/build.yml) [![CodeFactor](https://www.codefactor.io/repository/github/open-tech-world/es-cli-styles/badge)](https://www.codefactor.io/repository/github/open-tech-world/es-cli-styles)
 </div>
 
 > Add CLI styles to text.

@@ -110,7 +110,7 @@ console.log(style('Highlighted fruits: ~underline{Apple}, cat, ~underline{Banana
 ```
 ![](assets/underline.png)
 
-Strikethrought text
+Strikethrough text
 
 ```ts
 console.log(style('~strike.red{Deleted file.ext}'))

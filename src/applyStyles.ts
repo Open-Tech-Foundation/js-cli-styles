@@ -20,14 +20,22 @@ const standardColors: Record<string, string> = {
 const reset = `\x1B[39;2;m`;
 
 function addRGB(str: string, style: string) {
-  const value = style.slice(4, -1).split(',').join(';');
+  const value = style
+    .slice(4, -1)
+    .split(',')
+    .map((v) => v.trim())
+    .join(';');
   const ansiColorCode = `\x1B[38;2;${value}m`;
 
   return ansiColorCode + str + reset;
 }
 
 function addBgRGB(str: string, style: string) {
-  const value = style.slice(6, -1).split(',').join(';');
+  const value = style
+    .slice(6, -1)
+    .split(',')
+    .map((v) => v.trim())
+    .join(';');
   const ansiColorCode = `\x1B[48;2;${value}m`;
 
   return ansiColorCode + str + reset;
@@ -134,12 +142,12 @@ function applyStyles(str: string, styles: string): string {
       continue;
     }
 
-    if (style.match(/^rgb\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3}\)$/)) {
+    if (style.match(/^rgb\([0-9]{1,3},[\s]?[0-9]{1,3},[\s]?[0-9]{1,3}\)$/)) {
       styledStr = addRGB(styledStr, style);
       continue;
     }
 
-    if (style.match(/^bgRgb\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3}\)$/)) {
+    if (style.match(/^bgRgb\([0-9]{1,3},[\s]?[0-9]{1,3},[\s]?[0-9]{1,3}\)$/)) {
       styledStr = addBgRGB(styledStr, style);
       continue;
     }

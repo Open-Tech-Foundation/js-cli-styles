@@ -19,6 +19,20 @@ const standardColors: Record<string, string> = {
 };
 const reset = `\x1B[39;2;m`;
 
+function addRGB(str: string, style: string) {
+  const value = style.slice(4, -1).split(',').join(';');
+  const ansiColorCode = `\x1B[38;2;${value}m`;
+
+  return ansiColorCode + str + reset;
+}
+
+function addBgRGB(str: string, style: string) {
+  const value = style.slice(6, -1).split(',').join(';');
+  const ansiColorCode = `\x1B[48;2;${value}m`;
+
+  return ansiColorCode + str + reset;
+}
+
 function addColor(str: string, name: string) {
   const ansiColorCode = `\x1B[38;2;${standardColors[name]}m`;
 
@@ -85,7 +99,7 @@ function applyStyles(str: string, styles: string): string {
   for (let i = 0; i < stylesArr.length; i++) {
     const style = stylesArr[i];
 
-    if (style.match(/bg/)) {
+    if (style.match(/^bg[A-Z][a-z]+$/)) {
       styledStr = addBgColor(styledStr, style.substring(2).toLowerCase());
       continue;
     }
@@ -117,6 +131,16 @@ function applyStyles(str: string, styles: string): string {
 
     if (style === 'strike') {
       styledStr = strike(styledStr);
+      continue;
+    }
+
+    if (style.match(/^rgb\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3}\)$/)) {
+      styledStr = addRGB(styledStr, style);
+      continue;
+    }
+
+    if (style.match(/^bgRgb\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3}\)$/)) {
+      styledStr = addBgRGB(styledStr, style);
       continue;
     }
   }

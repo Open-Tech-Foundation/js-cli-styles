@@ -85,7 +85,7 @@ console.log(style('~bold.white.bgGreen{ PASS }'))
 Inverse colors
 
 ```ts
-console.log(style('~inverse.red.bgWhite{ FAILED }))
+console.log(style('~inverse.red.bgWhite{ FAILED }'))
 ```
 ![](assets/inverse.png)
 

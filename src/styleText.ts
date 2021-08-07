@@ -6,7 +6,7 @@ function hasStyle(str: string): boolean {
 }
 
 function styleText(str: string): string {
-  const stylePattern = /(~)([^{]+)\{([^~}]+)\}/g;
+  const stylePattern = /(~)([^{]+)\{([^{}}]+)\}/g;
   const regExp = new RegExp(stylePattern);
   const regExpresult = regExp.exec(str);
   let styledStr = '';

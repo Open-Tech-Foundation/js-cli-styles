@@ -5,8 +5,8 @@ function style(str: string): string {
     return '';
   }
 
-  let result = str;
-  const stylePattern = /(?:~)(?:[^{]+)(?:\{(?:[^~}]+)\})/g;
+  let result = styleText(str);
+  const stylePattern = /(?:~)(?:[^{]+)(?:\{(?:[^{}]+)\})/g;
 
   while (result.match(stylePattern)) {
     result = styleText(result);

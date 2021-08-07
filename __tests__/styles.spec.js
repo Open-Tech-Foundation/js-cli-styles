@@ -68,4 +68,14 @@ describe('Styles', () => {
       '\x1B[48;2;0;255;0mRGB\x1B[39;2;m'
     );
   });
+
+  it('renders fg color text with ~ tilde char in it', () => {
+    const path = 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\node_rm_xyz';
+
+    expect(
+      style(`~red{ENOENT: no such file or directory, scandir '${path}'}`)
+    ).toEqual(
+      `\x1B[38;2;255;65;54mENOENT: no such file or directory, scandir 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\node_rm_xyz'\x1B[39;2;m`
+    );
+  });
 });

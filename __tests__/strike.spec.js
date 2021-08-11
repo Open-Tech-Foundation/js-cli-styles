@@ -1,4 +1,4 @@
-import { style } from '../lib/index.js';
+import { style } from '../lib/index.esm.js';
 
 describe('Strike style', () => {
   it('does not make text strike', () => {

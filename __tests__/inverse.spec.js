@@ -1,4 +1,4 @@
-import { style } from '../lib/index.js';
+import { style } from '../lib/index.esm.js';
 
 describe('Inverse style', () => {
   it('does not make text inverse', () => {

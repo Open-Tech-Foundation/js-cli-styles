@@ -4,7 +4,11 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      dir: './lib',
+      file: './lib/index.cjs',
+      format: 'cjs',
+    },
+    {
+      file: './lib/index.esm.js',
       format: 'esm',
     },
   ],

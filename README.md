@@ -1,10 +1,12 @@
 <div align="center">
 
-# @open-tech-world/es-cli-styles
-[![Build](https://github.com/open-tech-world/es-cli-styles/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-world/es-cli-styles/actions/workflows/build.yml) [![CodeFactor](https://www.codefactor.io/repository/github/open-tech-world/es-cli-styles/badge)](https://www.codefactor.io/repository/github/open-tech-world/es-cli-styles)
+# @open-tech-world/ansi-styles
+
+[![Build](https://github.com/open-tech-world/ansi-styles/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-world/ansi-styles/actions/workflows/build.yml) [![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@open-tech-world/ansi-styles/latest?label=Min%2BGZip)](https://bundlephobia.com/package/@open-tech-world/ansi-styles)
+
 </div>
 
-> Add CLI styles to text.
+> Style your text using [ANSI](https://en.wikipedia.org/wiki/ANSI_escape_code) escape sequences.
 
 ## Features
 
@@ -35,19 +37,19 @@
 Using npm
 
 ```shell
-npm install @open-tech-world/es-cli-styles
+npm install @open-tech-world/ansi-styles
 ```
 
 Using Yarn
 
 ```shell
-yarn add @open-tech-world/es-cli-styles
+yarn add @open-tech-world/ansi-styles
 ```
 
 ## Usage
 
 ```ts
-import { style } from '@open-tech-world/es-cli-styles';
+import { style } from '@open-tech-world/ansi-styles';
 
 style('~styleName[.styleName...]{Text}');
 ```
@@ -57,64 +59,83 @@ style('~styleName[.styleName...]{Text}');
 Using foreground color name
 
 ```ts
-console.log(style('I like 🍊 ~orange{oranges}'))
+console.log(style('I like 🍊 ~orange{oranges}'));
 ```
+
 ![](assets/orange-color.png)
 
 Using multiple colors
 
 ```ts
-console.log(style('An ~red{apple} is red but the ~green{leaves} are green, came in a blue ~blue{box}'))
+console.log(
+  style(
+    'An ~red{apple} is red but the ~green{leaves} are green, came in a blue ~blue{box}'
+  )
+);
 ```
+
 ![](assets/multiple-colors.png)
 
 Nested colors
 
 ```ts
-console.log(style('~blue{This is a long blue text with some ~red{red} & ~green{green} color in it}'))
+console.log(
+  style(
+    '~blue{This is a long blue text with some ~red{red} & ~green{green} color in it}'
+  )
+);
 ```
+
 ![](assets/nested-colors.png)
 
 Composing different styles
 
 ```ts
-console.log(style('~bold.white.bgGreen{ PASS }'))
+console.log(style('~bold.white.bgGreen{ PASS }'));
 ```
+
 ![](assets/bg-color.png)
 
 Inverse colors
 
 ```ts
-console.log(style('~inverse.red.bgWhite{ FAILED }'))
+console.log(style('~inverse.red.bgWhite{ FAILED }'));
 ```
+
 ![](assets/inverse.png)
 
 Faint, decreased intensity, or dim text
 
 ```ts
-console.log(style('~dim{TEXT}'))
+console.log(style('~dim{TEXT}'));
 ```
+
 ![](assets/dim-text.png)
 
 Italic fonts
 
 ```ts
-console.log(style('~italic.fuchsia.bold.bgWhite{ Beautiful Text }'))
+console.log(style('~italic.fuchsia.bold.bgWhite{ Beautiful Text }'));
 ```
+
 ![](assets/italic-text.png)
 
 Underlined texts
 
 ```ts
-console.log(style('Highlighted fruits: ~underline{Apple}, cat, ~underline{Banana}'))
+console.log(
+  style('Highlighted fruits: ~underline{Apple}, cat, ~underline{Banana}')
+);
 ```
+
 ![](assets/underline.png)
 
 Strikethrough text
 
 ```ts
-console.log(style('~strike.red{Deleted file.ext}'))
+console.log(style('~strike.red{Deleted file.ext}'));
 ```
+
 ![](assets/strikethrough.png)
 
 Custom functions
@@ -124,69 +145,52 @@ function warning(str) {
   return style(`⚠️  ~bold.black.bgYellow{${str}}`);
 }
 
-console.log(warning(' CAUTION '))
+console.log(warning(' CAUTION '));
 ```
-![](assets/caution.png)
 
+![](assets/caution.png)
 
 ## Style names
 
-- #### Foreground colors
-  - blue
-  - red
-  - green
-  - orange
-  - navy
-  - aqua
-  - teal
-  - purple
-  - fuchsia
-  - maroon
-  - yellow
-  - olive
-  - lime
-  - black
-  - gray
-  - silver
-  - white
+ - Colors
 
+    | Foreground Colors | Background Colors |
+    | ----------------- | ----------------- |
+    | blue              | bgBlue            |
+    | red               | bgRed             |
+    | green             | bgGreen           |
+    | orange            | bgOrange          |
+    | navy              | bgNavy            |
+    | aqua              | bgAqua            |
+    | teal              | bgTeal            |
+    | purple            | bgPurple          |
+    | fuchsia           | bgFuchsia         |
+    | maroon            | bgMaroon          |
+    | yellow            | bgYellow          |
+    | olive             | bgOlive           |
+    | lime              | bgLime            |
+    | black             | bgBlack           |
+    | gray              | bgGray            |
+    | silver            | bgSilver          |
+    | white             | bgWhite           |
 
-- #### Background colors
-  - bgBlue
-  - bgRed
-  - bgGreen
-  - bgOrange
-  - bgNavy
-  - bgAqua
-  - bgTeal
-  - bgPurple
-  - bgFuchsia
-  - bgMaroon
-  - bgYellow
-  - bgOlive
-  - bgLime
-  - bgBlack
-  - bgGray
-  - bgSilver
-  - bgWhite
 
 - rgb(red, green, blue)
 
 - bgRgb(red, green, blue)
 
 - #### Modifiers
-  - bold  
-  - dim  
-  - italic  
-  - underline  
-  - inverse  
-  - strike  
+  - bold
+  - dim
+  - italic
+  - underline
+  - inverse
+  - strike
 
 ## References
 
 https://en.wikipedia.org/wiki/ANSI_escape_code
 
-
 ## License
 
-Copyright (c) 2021, Thanga Ganapathy ([MIT License](./LICENSE)).
+Copyright (c) 2022, [Thanga Ganapathy](https://github.com/Thanga-Ganapathy) ([MIT License](./LICENSE)).

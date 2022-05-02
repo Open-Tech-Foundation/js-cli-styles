@@ -1,4 +1,4 @@
-import { style } from '../lib/index.esm.js';
+import { style } from '../src/index';
 
 describe('esCliStyles', () => {
   test('Standard background colors', () => {

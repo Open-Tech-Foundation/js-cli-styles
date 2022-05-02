@@ -1,4 +1,4 @@
-import { style } from '../lib/index.esm.js';
+import { style } from '../src/index';
 
 describe('Styles', () => {
   it('renders two fg colors in a text', () => {

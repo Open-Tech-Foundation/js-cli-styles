@@ -1,6 +1,6 @@
 import styleText from './styleText';
 
-function style(str: string): string {
+export default function style(str: string): string {
   if (!str || typeof str !== 'string') {
     return '';
   }
@@ -14,5 +14,3 @@ function style(str: string): string {
 
   return result;
 }
-
-export default style;

@@ -14,6 +14,8 @@
 
 ✔️ Nested Styles
 
+✔️ Supports browser dev tools console (Currently chrome & edge browsers only)
+
 ## Supported Styles
 
 ✔️ Foreground Colors
@@ -190,6 +192,8 @@ console.log(warning(' CAUTION '));
 ## References
 
 https://en.wikipedia.org/wiki/ANSI_escape_code
+
+https://developer.chrome.com/docs/devtools/console/format-style/
 
 ## License
 

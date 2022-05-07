@@ -1,6 +1,7 @@
 <div align="center">
 
-# @open-tech-world/ansi-styles
+# Ansi Styles
+⚡ by [Open Tech World](https://open-tech-world.pages.dev/)
 
 [![Build](https://github.com/open-tech-world/js-ansi-styles/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-world/js-ansi-styles/actions/workflows/build.yml) [![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@open-tech-world/ansi-styles/latest?label=Min%2BGZip)](https://bundlephobia.com/package/@open-tech-world/ansi-styles)
 

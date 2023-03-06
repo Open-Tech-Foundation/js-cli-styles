@@ -24,3 +24,4 @@ build
 built
 lib
 .parcel-cache
+.turbo

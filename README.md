@@ -1,13 +1,14 @@
 <div align="center">
 
-# Ansi Styles
-⚡ by [Open Tech World](https://open-tech-world.pages.dev/)
+# CLI Styles
 
-[![Build](https://github.com/open-tech-world/js-ansi-styles/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-world/js-ansi-styles/actions/workflows/build.yml) [![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@open-tech-world/ansi-styles/latest?label=Min%2BGZip)](https://bundlephobia.com/package/@open-tech-world/ansi-styles)
+⚡ by [OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
+
+[![Build](https://github.com/open-tech-foundation/js-cli-styles/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-foundation/js-cli-styles/actions/workflows/build.yml)
 
 </div>
 
-> Style your text using [ANSI](https://en.wikipedia.org/wiki/ANSI_escape_code) escape sequences.
+> Style your CLI text using [ANSI](https://en.wikipedia.org/wiki/ANSI_escape_code) escape sequences.
 
 ## Features
 
@@ -40,19 +41,31 @@
 Using npm
 
 ```shell
-npm install @open-tech-world/ansi-styles
+npm install @opentf/cli-styles
 ```
 
 Using Yarn
 
 ```shell
-yarn add @open-tech-world/ansi-styles
+yarn add @opentf/cli-styles
+```
+
+Using pnpm
+
+```shell
+pnpm add @opentf/cli-styles
+```
+
+## Syntax
+
+```ts
+style(str: string): string;
 ```
 
 ## Usage
 
 ```ts
-import { style } from '@open-tech-world/ansi-styles';
+import { style } from '@opentf/cli-styles';
 
 style('~styleName[.styleName...]{Text}');
 ```
@@ -62,22 +75,22 @@ style('~styleName[.styleName...]{Text}');
 Using foreground color name
 
 ```ts
-console.log(style('I like 🍊 ~orange{oranges}'));
+style(
+  '🍊🍊🍊 - An ~orange{orange} is a fruit of various citrus species in the family Rutaceae.'
+);
 ```
 
-![](assets/orange-color.png)
+![](assets/fg_color_oranges.png)
 
 Using multiple colors
 
 ```ts
-console.log(
-  style(
-    'An ~red{apple} is red but the ~green{leaves} are green, came in a blue ~blue{box}'
-  )
+style(
+  'The ~red{R}~green{G}~blue{B} color model is an additive color model in which the ~red{red}, ~green{green} and ~blue{blue} primary colors of light are added together in various ways to reproduce a broad array of colors.'
 );
 ```
 
-![](assets/multiple-colors.png)
+![](assets/rgb.png)
 
 Nested colors
 
@@ -107,13 +120,13 @@ console.log(style('~inverse.red.bgWhite{ FAILED }'));
 
 ![](assets/inverse.png)
 
-Faint, decreased intensity, or dim text
+Normal vs Bold vs Dim text(Faint or decreased intensity)
 
 ```ts
-console.log(style('~dim{TEXT}'));
+console.log(style('Normal text | ~bold{Bold text} | ~dim{Dimmed text}'));
 ```
 
-![](assets/dim-text.png)
+![](assets/normal_bold_dim.png)
 
 Italic fonts
 
@@ -141,42 +154,64 @@ console.log(style('~strike.red{Deleted file.ext}'));
 
 ![](assets/strikethrough.png)
 
-Custom functions
+Code Highlighting:
 
-```ts
-function warning(str) {
-  return style(`⚠️  ~bold.black.bgYellow{${str}}`);
+```js
+// demo.js
+import { style } from '@opentf/cli-styles';
+import hljs from 'highlight.js';
+import { decode } from 'html-entities';
+
+function highlight(code) {
+  let html = hljs.highlight(code, {
+    language: 'js',
+  }).value;
+  html = html.replaceAll('<span class="hljs-keyword">', '~fuchsia{');
+  html = html.replaceAll('<span class="hljs-variable language_">', '~blue{');
+  html = html.replaceAll('<span class="hljs-title function_">', '~lime{');
+  html = html.replaceAll('<span class="hljs-string">', '~yellow{');
+  html = html.replaceAll('<span class="hljs-params"></span>', '');
+  html = html.replaceAll('<span class="hljs-comment">', '~gray.dim{');
+  html = html.replaceAll('</span>', '}');
+  html = decode(html);
+  console.log(style(html));
 }
 
-console.log(warning(' CAUTION '));
+const code = `
+// Comment
+function greet() {
+  console.log('Hello World!');
+}
+`;
+
+highlight(code);
 ```
 
-![](assets/caution.png)
+![](assets/code_highlight.png)
 
 ## Style names
 
- - Colors
+- Colors
 
-    | Foreground Colors | Background Colors |
-    | ----------------- | ----------------- |
-    | blue              | bgBlue            |
-    | red               | bgRed             |
-    | green             | bgGreen           |
-    | orange            | bgOrange          |
-    | navy              | bgNavy            |
-    | aqua              | bgAqua            |
-    | teal              | bgTeal            |
-    | purple            | bgPurple          |
-    | fuchsia           | bgFuchsia         |
-    | maroon            | bgMaroon          |
-    | yellow            | bgYellow          |
-    | olive             | bgOlive           |
-    | lime              | bgLime            |
-    | black             | bgBlack           |
-    | gray              | bgGray            |
-    | silver            | bgSilver          |
-    | white             | bgWhite           |
-
+  | Foreground Colors | Background Colors |
+  | ----------------- | ----------------- |
+  | blue              | bgBlue            |
+  | red               | bgRed             |
+  | green             | bgGreen           |
+  | orange            | bgOrange          |
+  | navy              | bgNavy            |
+  | aqua              | bgAqua            |
+  | teal              | bgTeal            |
+  | purple            | bgPurple          |
+  | fuchsia           | bgFuchsia         |
+  | maroon            | bgMaroon          |
+  | yellow            | bgYellow          |
+  | olive             | bgOlive           |
+  | lime              | bgLime            |
+  | black             | bgBlack           |
+  | gray              | bgGray            |
+  | silver            | bgSilver          |
+  | white             | bgWhite           |
 
 - rgb(red, green, blue)
 

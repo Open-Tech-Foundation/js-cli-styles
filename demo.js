@@ -24,19 +24,21 @@ function greet() {
 }
 `;
 
-highlight(code);
+// highlight(code);
 
-function run(str) {
+function run(str, color = true) {
   console.log();
   console.log(str);
   console.log();
-  console.log(style(str));
+  console.log(style(str, { color }));
   console.log();
 }
 
-run(
-  "$bgbl.b{THE QUICK $g{BROWN $r.bol{CAT} JUMPED} OVER THE LAZY $r.bol{DOG}'S BACK}"
-);
+run('This is normal string $r{RED} $g{GREEN}', false);
+
+// run(
+//   "$bgbl.b{THE QUICK $g{BROWN $r.bol{CAT} JUMPED} OVER THE LAZY $r.bol{DOG}'S BACK}"
+// );
 
 // run('$bol{foo $r.dun{bar} $ovl.nor.o{hindi} baz} $und{UNDERLINE}');
 

@@ -205,4 +205,16 @@ describe('colors', () => {
       '\x1B[38;2;255;65;54mCOLOR\x1B[0m'
     );
   });
+
+  it('renders with color', () => {
+    expect(
+      style('This is will be normal $r{RED} string', { color: true })
+    ).toEqual('This is will be normal \x1B[38;2;255;65;54mRED\x1B[0m string');
+  });
+
+  it('renders without color', () => {
+    expect(
+      style('This is will be normal $r{RED} string', { color: false })
+    ).toEqual('This is will be normal RED string');
+  });
 });

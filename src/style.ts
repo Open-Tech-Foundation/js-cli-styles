@@ -78,37 +78,40 @@ function parser(str: string) {
   return arr;
 }
 
-function renderWithStyles(obj) {
+function renderWithStyles(obj, color: boolean) {
   let out = '';
 
   obj.text.forEach((t) => {
     if (typeof t === 'string') {
-      out += applyStyles(t, obj.styles);
+      out += color ? applyStyles(t, obj.styles) : t;
     } else {
-      out += renderWithStyles(t);
+      out += renderWithStyles(t, color);
     }
   });
 
   return out;
 }
 
-function render(arr) {
+function render(arr, color: boolean) {
   let out = '';
   arr.forEach((item) => {
     if (typeof item === 'string') {
       out += item;
     } else {
-      out += renderWithStyles(item);
+      out += renderWithStyles(item, color);
     }
   });
 
   return out;
 }
 
-export default function style(str: string): string {
+export default function style(
+  str: string,
+  options: { color: boolean }
+): string {
+  const color = options ? options.color : true;
   const parsedValue = parser(str);
-  // console.log(JSON.stringify(parsedValue, null, 2));
-  const out = render(parsedValue);
+  const out = render(parsedValue, color);
 
   return out;
 }

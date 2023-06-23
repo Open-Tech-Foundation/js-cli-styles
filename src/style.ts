@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 // import styleText from './styleText';
 
 import applyStyles from './applyStyles';
@@ -105,11 +106,30 @@ function render(arr, color: boolean) {
   return out;
 }
 
+function isSupportsColor() {
+  if (
+    process.argv.includes('--no-color') ||
+    process.argv.includes('--color=false') ||
+    process.env.NO_COLOR
+  ) {
+    return false;
+  }
+
+  if (process.env.COLORTERM === 'truecolor') {
+    return true;
+  }
+
+  return false;
+}
+
 export default function style(
   str: string,
   options: { color: boolean }
 ): string {
-  const color = options ? options.color : true;
+  let color = options && 'color' in options ? options.color : true;
+  if (color) {
+    color = isSupportsColor();
+  }
   const parsedValue = parser(str);
   const out = render(parsedValue, color);
 

@@ -34,7 +34,7 @@ function run(str, color = true) {
   console.log();
 }
 
-run('This is normal string $r{RED} $g{GREEN}', false);
+run('This is normal string $r{RED} $g{GREEN}');
 
 // run(
 //   "$bgbl.b{THE QUICK $g{BROWN $r.bol{CAT} JUMPED} OVER THE LAZY $r.bol{DOG}'S BACK}"

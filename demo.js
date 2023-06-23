@@ -34,7 +34,23 @@ function run(str, color = true) {
   console.log();
 }
 
-run('This is normal string $r{RED} $g{GREEN}');
+const cpu = 90;
+const ram = 40;
+const disk = 70;
+
+const getColor = (n) => (n <= 50 ? 'g' : n > 50 && n <= 70 ? 'y' : 'r');
+
+run(`
+ CPU: $${getColor(cpu)}{${cpu}%}
+ RAM: $${getColor(ram)}{${ram}%}
+DISK: $${getColor(disk)}{${disk}%}
+`);
+
+// run('$r{RED} $r.bol{RED} $r.dim{RED}');
+
+// run('$g.blk{SALE!}');
+
+// run('This is normal string $r{RED} $g{GREEN}');
 
 // run(
 //   "$bgbl.b{THE QUICK $g{BROWN $r.bol{CAT} JUMPED} OVER THE LAZY $r.bol{DOG}'S BACK}"

@@ -16,7 +16,7 @@ function parseSyntax(
 
   for (let i = start + 1; i < str.length; i++) {
     cursor = i;
-    const c = str[i];
+    const c = str[i] as string;
 
     if (open && c === '\\') {
       s += str[i + 1];
@@ -24,7 +24,7 @@ function parseSyntax(
       continue;
     }
 
-    if (isSyntax(c, str[i + 1])) {
+    if (isSyntax(c, str[i + 1] as string)) {
       text.push(s);
       const [obj, cur] = parseSyntax(str, cursor, styles);
       text.push(obj);
@@ -64,8 +64,8 @@ export default function parser(str: string) {
   let s = '';
 
   for (let i = 0; i < str.length; i++) {
-    const c = str[i];
-    if (isSyntax(c, str[i + 1])) {
+    const c = str[i] as string;
+    if (isSyntax(c, str[i + 1] as string)) {
       const [obj, cursor] = parseSyntax(str, i);
       arr.push(s);
       arr.push(obj);

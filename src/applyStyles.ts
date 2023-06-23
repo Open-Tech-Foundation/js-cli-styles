@@ -28,7 +28,7 @@ function getStylesArr(styles: string, colorNames: string[]) {
   const stylesArr = styles.split('.');
 
   for (let i = 0; i < stylesArr.length; i++) {
-    const s = stylesArr[i];
+    const s = stylesArr[i] as string;
     if (colorNames.includes(s) || s.startsWith('hex') || s.startsWith('rgb')) {
       fgArr.push(i);
     }
@@ -55,7 +55,7 @@ export default function applyStyles(str: string, styles: string): string {
   // console.log(stylesArr);
 
   for (let i = 0; i < stylesArr.length; i++) {
-    const style = stylesArr[i];
+    const style = stylesArr[i] as string;
 
     if (colorNames.includes(style)) {
       params.push(`38;2;${standardColors[style]}`);

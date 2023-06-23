@@ -1,6 +1,6 @@
 import applyStyles from './applyStyles';
 import isSupportsColor from './isSupportsColor';
-import parser, { StyleObj } from './parser';
+import parser, { type StyleObj } from './parser';
 
 function renderWithStyles(obj: StyleObj, color: boolean) {
   let out = '';

@@ -2,7 +2,7 @@ export default function isSupportsColor() {
   const { env, argv } = process;
 
   if ('FORCE_COLOR' in env) {
-    if (parseInt(env.FORCE_COLOR as string) === 3) {
+    if (parseInt(env['FORCE_COLOR'] as string) === 3) {
       return true;
     }
 
@@ -12,12 +12,12 @@ export default function isSupportsColor() {
   if (
     argv.includes('--no-color') ||
     argv.includes('--color=false') ||
-    env.NO_COLOR
+    env['NO_COLOR']
   ) {
     return false;
   }
 
-  if (env.COLORTERM === 'truecolor') {
+  if (env['COLORTERM'] === 'truecolor') {
     return true;
   }
 

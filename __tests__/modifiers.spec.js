@@ -1,5 +1,13 @@
 import { style } from '../src/index';
 
+beforeAll(() => {
+  process.env.FORCE_COLOR = 3;
+});
+
+afterAll(() => {
+  delete process.env.FORCE_COLOR;
+});
+
 describe('Modifiers', () => {
   it('renders default style', () => {
     expect(style('$r{RED $res{Normal} RED}')).toEqual(

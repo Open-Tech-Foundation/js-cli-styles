@@ -1,5 +1,13 @@
 import { style } from '../src';
 
+beforeAll(() => {
+  process.env.FORCE_COLOR = 3;
+});
+
+afterAll(() => {
+  delete process.env.FORCE_COLOR;
+});
+
 describe('colors', () => {
   it('renders red fg color', () => {
     expect(style('$r{RED}')).toEqual('\x1B[38;2;255;65;54mRED\x1B[0m');

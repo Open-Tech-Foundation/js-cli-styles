@@ -46,7 +46,7 @@
     "type-check": "tsc",
     "ci": "turbo run build test lint type-check",
     "prepare": "husky install",
-    "publish-packages": "turbo run ci && changeset version && changeset publish"
+    "publish-packages": "pnpm run build && pnpm run test && changeset version && changeset publish"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

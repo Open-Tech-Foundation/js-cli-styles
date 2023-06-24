@@ -25,3 +25,4 @@ built
 lib
 .parcel-cache
 .turbo
+play.js

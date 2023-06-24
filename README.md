@@ -12,45 +12,57 @@
 
 ## Features
 
-✔️ 24-Bit Colors (True Color)
+- 24-Bit colors only (True Color)
 
-✔️ Nested Styles
+- Nested styles
 
-✔️ Supports browser dev tools console (Currently chrome & edge browsers only)
+- Auto detects CLI color support
 
-## Supported Styles
+- Supports RGB & Hex color modes
 
-✔️ Foreground Colors
+- Respects [NO_COLOR](https://no-color.org/) & [FORCE_COLOR](https://nodejs.org/api/cli.html#force_color1-2-3)
 
-✔️ Background Colors
+## Supported Terminals (Popular)
 
-✔️ Bold
+✔️ GNOME Terminal
 
-✔️ Dim
+✔️ Konsole
 
-✔️ Italic
+✔️ xfce4-terminal
 
-✔️ Underline
+✔️ MATE Terminal
 
-✔️ Inverse
+✔️ iTerm2
 
-✔️ Strikethrough
+✔️ VS Code
+
+✔️ Tabby
+
+✔️ Hyper
+
+✔️ Alacritty
+
+✔️ Contour
+
+✔️ kitty
+
+✔️ WezTerm
+
+⚠️ Windows Terminal (Need to set env var `COLORTERM=truecolor` or `FORCE_COLOR=3`)
+
+❌ Terminal.app
+
+\*Missing your favorite terminal emulators here? Please give a PR or file an issue in [Github](https://github.com/Open-Tech-Foundation/js-cli-styles/issues/new).
 
 ## Installation
-
-Using npm
 
 ```shell
 npm install @opentf/cli-styles
 ```
 
-Using Yarn
-
 ```shell
 yarn add @opentf/cli-styles
 ```
-
-Using pnpm
 
 ```shell
 pnpm add @opentf/cli-styles
@@ -59,7 +71,7 @@ pnpm add @opentf/cli-styles
 ## Syntax
 
 ```ts
-style(str: string): string;
+style(str: string, options: { color: boolean }): string;
 ```
 
 ## Usage
@@ -67,26 +79,26 @@ style(str: string): string;
 ```ts
 import { style } from '@opentf/cli-styles';
 
-style('~styleName[.styleName...]{Text}');
+style('$key[.key...]{Text}');
 ```
 
 ## Examples
 
-Using foreground color name
+Using foreground color
 
 ```ts
 style(
-  '🍊🍊🍊 - An ~orange{orange} is a fruit of various citrus species in the family Rutaceae.'
+  '🍊 - An $o{orange} is a fruit of various citrus species in the family Rutaceae.'
 );
 ```
 
-![](assets/fg_color_oranges.png)
+![](assets/orange.png)
 
 Using multiple colors
 
 ```ts
 style(
-  'The ~red{R}~green{G}~blue{B} color model is an additive color model in which the ~red{red}, ~green{green} and ~blue{blue} primary colors of light are added together in various ways to reproduce a broad array of colors.'
+  '$bgy.bl{The $r.bol{R}$g.bol{G}$b.bol{B} color model is an additive color model in which the $r.bol{red}, $g.bol{green} and $b.bol{blue} primary colors of light are added together in various ways to reproduce a broad array of colors.}'
 );
 ```
 
@@ -95,53 +107,51 @@ style(
 Nested colors
 
 ```ts
-console.log(
-  style(
-    '~blue{This is a long blue text with some ~red{red} & ~green{green} color in it}'
-  )
+style(
+  "$bgbl.b{THE QUICK $g{BROWN $r.bol{CAT} JUMPED} OVER THE LAZY $r.bol{DOG}'S BACK}"
 );
 ```
 
-![](assets/nested-colors.png)
+![](assets/nested.png)
 
 Composing different styles
 
 ```ts
-console.log(style('~bold.white.bgGreen{ PASS }'));
+style('$bol.w.bgg{ PASS }');
 ```
 
-![](assets/bg-color.png)
+![](assets/pass.png)
 
 Inverse colors
 
 ```ts
-console.log(style('~inverse.red.bgWhite{ FAILED }'));
+style('$inv.r.bgw.bol{ FAILED }');
 ```
 
-![](assets/inverse.png)
+![](assets/failed.png)
 
-Normal vs Bold vs Dim text(Faint or decreased intensity)
+Normal vs Bold vs Dim text
 
 ```ts
-console.log(style('Normal text | ~bold{Bold text} | ~dim{Dimmed text}'));
+style('Normal text | $bol{Bold text} | $dim{Dimmed text}');
 ```
 
-![](assets/normal_bold_dim.png)
+![](assets/fontweight.png)
 
 Italic fonts
 
 ```ts
-console.log(style('~italic.fuchsia.bold.bgWhite{ Beautiful Text }'));
+style(
+  '$ita.fuchsia.bol.bgw{"This poem is endless,\n the odds against us are endless,\n our chances of being alive together statistically nonexistent;\n still we have made it"}'
+);
 ```
 
-![](assets/italic-text.png)
+![](assets/italic.png)
 
 Underlined texts
 
 ```ts
-console.log(
-  style('Highlighted fruits: ~underline{Apple}, cat, ~underline{Banana}')
-);
+style('Highlighted fruits: $und{Apple}, cat, $und{Banana}');
 ```
 
 ![](assets/underline.png)
@@ -149,15 +159,14 @@ console.log(
 Strikethrough text
 
 ```ts
-console.log(style('~strike.red{Deleted file.ext}'));
+style('Price: $str.r{$75.00} $g{$50.00}');
 ```
 
-![](assets/strikethrough.png)
+![](assets/strike.png)
 
 Code Highlighting:
 
 ```js
-// demo.js
 import { style } from '@opentf/cli-styles';
 import hljs from 'highlight.js';
 import { decode } from 'html-entities';
@@ -166,15 +175,15 @@ function highlight(code) {
   let html = hljs.highlight(code, {
     language: 'js',
   }).value;
-  html = html.replaceAll('<span class="hljs-keyword">', '~fuchsia{');
-  html = html.replaceAll('<span class="hljs-variable language_">', '~blue{');
-  html = html.replaceAll('<span class="hljs-title function_">', '~lime{');
-  html = html.replaceAll('<span class="hljs-string">', '~yellow{');
+  html = html.replaceAll('<span class="hljs-keyword">', '$fuchsia{');
+  html = html.replaceAll('<span class="hljs-variable language_">', '$b{');
+  html = html.replaceAll('<span class="hljs-title function_">', '$lime{');
+  html = html.replaceAll('<span class="hljs-string">', '$y{');
   html = html.replaceAll('<span class="hljs-params"></span>', '');
-  html = html.replaceAll('<span class="hljs-comment">', '~gray.dim{');
+  html = html.replaceAll('<span class="hljs-comment">', '$gr.dim{');
   html = html.replaceAll('</span>', '}');
   html = decode(html);
-  console.log(style(html));
+  return style(html);
 }
 
 const code = `
@@ -184,52 +193,137 @@ function greet() {
 }
 `;
 
-highlight(code);
+console.log(highlight(code));
 ```
 
-![](assets/code_highlight.png)
+![](assets/highlight_code.png)
 
-## Style names
+Using Template Literals:
 
-- Colors
+```ts
+const cpu = 90;
+const ram = 40;
+const disk = 70;
 
-  | Foreground Colors | Background Colors |
-  | ----------------- | ----------------- |
-  | blue              | bgBlue            |
-  | red               | bgRed             |
-  | green             | bgGreen           |
-  | orange            | bgOrange          |
-  | navy              | bgNavy            |
-  | aqua              | bgAqua            |
-  | teal              | bgTeal            |
-  | purple            | bgPurple          |
-  | fuchsia           | bgFuchsia         |
-  | maroon            | bgMaroon          |
-  | yellow            | bgYellow          |
-  | olive             | bgOlive           |
-  | lime              | bgLime            |
-  | black             | bgBlack           |
-  | gray              | bgGray            |
-  | silver            | bgSilver          |
-  | white             | bgWhite           |
+const getColor = (n) => (n <= 50 ? 'g' : n > 50 && n <= 70 ? 'y' : 'r');
 
-- rgb(red, green, blue)
+style(`
+ CPU: $${getColor(cpu)}{${cpu}%}
+ RAM: $${getColor(ram)}{${ram}%}
+DISK: $${getColor(disk)}{${disk}%}
+`);
+```
 
-- bgRgb(red, green, blue)
+![](assets/template_literal.png)
 
-- #### Modifiers
-  - bold
-  - dim
-  - italic
-  - underline
-  - inverse
-  - strike
+Escape characters:
+
+Use double back slashes to escape a character in a string.
+
+```ts
+style(
+  `<$hex(#39CCCC){input} name=$y{"price"} value=$y{"\\$\\{ Cost + Tax \\}.00"} />`
+);
+```
+
+![](assets/escape.png)
+
+Blinking Text:
+
+```ts
+style('$g.bol{SALE! - $blk.r{50% OFFER}}');
+```
+
+![](assets/sale.gif)
+
+## Color Keys
+
+| Key                   | Description                                                                                                                                                         |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| r                     | Red - rgb(255,65,54)                                                                                                                                                |
+| g                     | Green - rgb(46,204,64)                                                                                                                                              |
+| b                     | Blue - rgb(0,116,217)                                                                                                                                               |
+| o                     | Orange - rgb(255,133,27)                                                                                                                                            |
+| y                     | Yellow - rgb(255,220,0)                                                                                                                                             |
+| w                     | White - rgb(255,255,255)                                                                                                                                            |
+| bl                    | Black - rgb(17,17,17)                                                                                                                                               |
+| gr                    | Grey - rgb(170,170,170)                                                                                                                                             |
+| navy                  | Navy - rgb(0,31,63)                                                                                                                                                 |
+| aqua                  | Aqua - rgb(127,219,255)                                                                                                                                             |
+| teal                  | Teal - rgb(57,204,204)                                                                                                                                              |
+| purple                | Purple - rgb(177,13,201)                                                                                                                                            |
+| fuchsia               | Fuchsia - rgb(240,18,190)                                                                                                                                           |
+| maroon                | Maroon - rgb(133,20,75)                                                                                                                                             |
+| olive                 | Olive - rgb(61,153,112)                                                                                                                                             |
+| lime                  | Lime - rgb(1,255,112)                                                                                                                                               |
+| silver                | Silver - rgb(221,221,221)                                                                                                                                           |
+| rgb(red, green, blue) | The RGB colors, Eg: rgb(255,0,0) for red color                                                                                                                      |
+| hex(#------)          | The 6-digit Hex colors, Eg: hex(#00ff00) for green color                                                                                                            |
+| bg\*                  | The background colors can be applied with prefix `bg` to any color keys.<br> Eg: <br/>bgw for white bg<br/>bgrgb(0,0,0) for black bg<br/>bghex(#0000FF) for blue bg |
+
+## Modifier Keys
+
+| Key | Description                           |
+| --- | ------------------------------------- |
+| res | Reset all attributes to normal        |
+| nor | Normal intensity Neither bold nor dim |
+| bol | Bold or increased intensity text      |
+| dim | Dimmed or decreased intensity text    |
+| ita | Italic text                           |
+| und | Underlined text                       |
+| inv | Swap foreground and background colors |
+| str | Strikethrough text                    |
+| hid | Hidden text                           |
+| dun | Double underlined text                |
+| ovl | Overlined text                        |
+| blk | Blinking text                         |
+
+## Color Overrides
+
+You can disable colors/styles by the following methods:
+
+- Pass `color` option `false` to the `style` function.
+
+- Pass `--no-color` or `--color=false` to the process arguments.
+
+- Set `FORCE_COLOR=0` in enviroment variables.
+
+You can force enable colors/styles by setting `FORCE_COLOR=3` in enviroment variables.
+
+## Modifier Keys Supported Terminals
+
+| Key | Supported Terminals                                                                                                                                                                                                                 |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| res | ✅ Gnome Terminal<br/> ✅ Konsole <br/> ✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ iTerm2<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Alacritty<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal           |
+| nor | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
+| bol | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
+| dim | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
+| ita | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
+| und | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
+| inv | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
+| str | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
+| hid | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>✅ Alacritty              |
+| dun | ✅ Gnome Terminal<br/>❌ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>❌ VS Code<br/>✅ Tabby<br/>✅ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty |
+| ovl | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>❌ VS Code<br/>❌ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty              |
+| blk | ✅ Gnome Terminal<br/> ✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>❌ VS Code<br/>❌ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty             |
 
 ## References
 
 https://en.wikipedia.org/wiki/ANSI_escape_code
 
+https://github.com/termstandard/colors
+
+https://no-color.org/
+
+https://nodejs.org/api/cli.html#force_color1-2-3
+
+https://clrs.cc/
+
 https://developer.chrome.com/docs/devtools/console/format-style/
+
+## Related
+
+- [@opentf/utils](https://www.npmjs.com/package/@opentf/utils) - A collection of JavaScript utility functions.
 
 ## License
 

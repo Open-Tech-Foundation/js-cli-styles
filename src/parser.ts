@@ -6,57 +6,72 @@ export type StyleObj = {
 function parseSyntax(
   str: string,
   start: number,
-  baseStyles = ''
-): [StyleObj, number] {
+  styles = ''
+): [string | StyleObj, number] {
   const text = [];
-  let s = '';
-  let styles = baseStyles.length > 0 ? baseStyles + '.' : baseStyles;
+  let tempStr = '';
+  let styleStr = '';
   let open = false;
   let cursor = start + 1;
+  let strStart = start;
+  const getCurStyles = () =>
+    styles.length > 0 ? styles + '.' + styleStr : styleStr;
 
-  for (let i = start + 1; i < str.length; i++) {
-    cursor = i;
-    const c = str[i] as string;
-
-    if (open && c === '\\') {
-      s += str[i + 1];
-      i++;
-      continue;
-    }
-
-    if (isSyntax(c, str[i + 1] as string)) {
-      text.push(s);
-      const [obj, cur] = parseSyntax(str, cursor, styles);
-      text.push(obj);
-      i = cur;
-      s = '';
-      continue;
-    }
-
-    if (open && c === '}') {
-      text.push(s);
-      return [{ text, styles } as StyleObj, i];
-    }
+  for (; cursor < str.length; cursor++) {
+    const c = str[cursor];
 
     if (open) {
-      s += c;
+      if (c === '\\') {
+        tempStr += str[cursor + 1];
+        cursor++;
+        continue;
+      }
+
+      if (c === '}') {
+        text.push(tempStr);
+        open = false;
+        return [{ text, styles: getCurStyles() } as StyleObj, cursor];
+      }
+
+      if (c === '$') {
+        text.push({ text: [tempStr], styles: getCurStyles() });
+        const [obj, cur] = parseSyntax(str, cursor, getCurStyles());
+        text.push(obj);
+        cursor = cur;
+        tempStr = '';
+        continue;
+      }
+
+      tempStr += c;
       continue;
     }
 
     if (c === '{') {
       open = true;
-    } else {
-      styles += c;
+      continue;
     }
+
+    if (c === '$') {
+      text.push(str.substring(strStart, cursor));
+      styleStr = '';
+      const [obj, cur] = parseSyntax(str, cursor, styles);
+      text.push(obj);
+      cursor = cur;
+      tempStr = '';
+      strStart = cur + 1;
+      continue;
+    }
+
+    styleStr += c;
   }
 
-  text.push(s);
+  if (!open && text.length === 0) {
+    return [str.substring(strStart, cursor), cursor];
+  }
 
-  return [{ text, styles } as StyleObj, cursor];
-}
+  text.push(styleStr);
 
-function isSyntax(c1: string, c2: string) {
-  return c1 === '$' && new RegExp('[a-z]').test(c2);
+  return [{ text, styles: getCurStyles() } as StyleObj, cursor];
 }
 
 export default function parser(str: string) {
@@ -65,7 +80,7 @@ export default function parser(str: string) {
 
   for (let i = 0; i < str.length; i++) {
     const c = str[i] as string;
-    if (isSyntax(c, str[i + 1] as string)) {
+    if (c === '$') {
       const [obj, cursor] = parseSyntax(str, i);
       arr.push(s);
       arr.push(obj);

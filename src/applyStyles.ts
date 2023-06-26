@@ -48,6 +48,10 @@ function getStylesArr(styles: string, colorNames: string[]) {
 }
 
 export default function applyStyles(str: string, styles: string): string {
+  if (!styles) {
+    return str;
+  }
+
   const ansiStart = '\x1B[';
   const params = [];
   const colorNames = Object.keys(standardColors);

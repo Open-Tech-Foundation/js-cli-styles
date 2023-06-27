@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.8.0
+
+### Minor Changes
+
+- d1d2ce7: Fixed style fn options set to optional.
+
 ## 0.7.0
 
 ### Minor Changes

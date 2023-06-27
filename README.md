@@ -159,7 +159,7 @@ style('Highlighted fruits: $und{Apple}, cat, $und{Banana}');
 Strikethrough text
 
 ```ts
-style('Price: $str.r{$75.00} $g{$50.00}');
+style('Price: $str.r{\\$75.00} $g{\\$50.00}');
 ```
 
 ![](assets/strike.png)
@@ -292,20 +292,20 @@ You can force enable colors/styles by setting `FORCE_COLOR=3` in enviroment vari
 
 ## Modifier Keys Supported Terminals
 
-| Key | Supported Terminals                                                                                                                                                                                                                 |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| res | ✅ Gnome Terminal<br/> ✅ Konsole <br/> ✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ iTerm2<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Alacritty<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal           |
-| nor | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
-| bol | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
-| dim | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
-| ita | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
-| und | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
-| inv | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
-| str | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty              |
-| hid | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>✅ Alacritty              |
-| dun | ✅ Gnome Terminal<br/>❌ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>❌ VS Code<br/>✅ Tabby<br/>✅ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty |
-| ovl | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>❌ VS Code<br/>❌ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty              |
-| blk | ✅ Gnome Terminal<br/> ✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>❌ VS Code<br/>❌ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty             |
+| Key | Supported Terminals                                                                                                                                                                                                       |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| res | ✅ Gnome Terminal<br/> ✅ Konsole <br/> ✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ iTerm2<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Alacritty<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal |
+| nor | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
+| bol | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
+| dim | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
+| ita | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
+| und | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
+| inv | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
+| str | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
+| hid | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>✅ Alacritty    |
+| dun | ✅ Gnome Terminal<br/>❌ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty    |
+| ovl | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>❌ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty    |
+| blk | ✅ Gnome Terminal<br/> ✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>❌ VS Code<br/>❌ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty   |
 
 ## References
 

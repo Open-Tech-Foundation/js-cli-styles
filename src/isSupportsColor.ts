@@ -21,5 +21,14 @@ export default function isSupportsColor() {
     return true;
   }
 
+  // Windows 10 build 14931 is the first release that supports 16m/TrueColor.
+  if (process.platform === 'win32') {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { release } = require('os');
+    if (+release().split('.')[2] > 14931) {
+      return true;
+    }
+  }
+
   return false;
 }

@@ -86,7 +86,7 @@ run(
 
 run('Highlighted fruits: $und{Apple}, cat, $und{Banana}');
 
-run('Price: $str.r{$75.00} $g{$50.00}');
+run('Price: $str.r{\\$75.00} $g{\\$50.00}');
 
 run('$rgb(197, 24, 117){Some random rgb text}');
 

@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.7.0
+
+### Minor Changes
+
+- a6ee936: Fixed types export in pkg.
+
 ## 0.6.0
 
 ### Minor Changes

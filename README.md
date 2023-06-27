@@ -48,7 +48,7 @@
 
 ✔️ WezTerm
 
-⚠️ Windows Terminal (Need to set env var `COLORTERM=truecolor` or `FORCE_COLOR=3`)
+✔️ Windows Terminal
 
 ❌ Terminal.app
 
@@ -71,7 +71,7 @@ pnpm add @opentf/cli-styles
 ## Syntax
 
 ```ts
-style(str: string, options: { color: boolean }): string;
+style(str: string, options?: { color: boolean }): string;
 ```
 
 ## Usage

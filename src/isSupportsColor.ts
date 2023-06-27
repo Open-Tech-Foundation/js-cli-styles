@@ -1,3 +1,5 @@
+import { release } from 'node:os';
+
 export default function isSupportsColor() {
   const { env, argv } = process;
 
@@ -23,9 +25,8 @@ export default function isSupportsColor() {
 
   // Windows 10 build 14931 is the first release that supports 16m/TrueColor.
   if (process.platform === 'win32') {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { release } = require('os');
-    if (+release().split('.')[2] > 14931) {
+    const build = release().split('.')[2] as string;
+    if (+build > 14931) {
       return true;
     }
   }

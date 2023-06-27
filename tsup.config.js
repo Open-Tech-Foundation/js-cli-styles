@@ -8,4 +8,5 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   dts: true,
   minify: true,
+  platform: 'node',
 });

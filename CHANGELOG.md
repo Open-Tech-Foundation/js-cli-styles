@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.9.0
+
+### Minor Changes
+
+- bfe943c: Fixed importing node:os release fn.
+
 ## 0.8.0
 
 ### Minor Changes

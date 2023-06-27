@@ -31,7 +31,7 @@ function render(arr: (string | StyleObj)[], color: boolean) {
 
 export default function style(
   str: string,
-  options: { color: boolean }
+  options?: { color: boolean }
 ): string {
   let color = options && 'color' in options ? options.color : true;
   if (color) {

@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.9.1
+
+### Patch Changes
+
+- 1c7adf6: Updated readme.
+
 ## 0.9.0
 
 ### Minor Changes

@@ -231,7 +231,7 @@ style(
 Blinking Text:
 
 ```ts
-style('$g.bol{SALE! - $blk.r{50% OFFER}}');
+style('$g.bol{SALE! -} $blk.r.bol{50% OFFER}');
 ```
 
 ![](assets/sale.gif)

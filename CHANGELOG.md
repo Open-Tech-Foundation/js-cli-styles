@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.9.2
+
+### Patch Changes
+
+- d3af2ea: Updated readme with cli-pbar related links.
+
 ## 0.9.1
 
 ### Patch Changes

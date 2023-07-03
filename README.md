@@ -325,6 +325,8 @@ https://developer.chrome.com/docs/devtools/console/format-style/
 
 - [@opentf/utils](https://www.npmjs.com/package/@opentf/utils) - A collection of JavaScript utility functions.
 
+- [@opentf/cli-pbar](https://www.npmjs.com/package/@opentf/cli-pbar) - CLI progress bar.
+
 ## License
 
 Copyright (c) 2022, [Thanga Ganapathy](https://github.com/Thanga-Ganapathy) ([MIT License](./LICENSE)).

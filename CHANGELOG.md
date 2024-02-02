@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.10.0
+
+### Minor Changes
+
+- fadf566: Added pkg provenance support.
+
 ## 0.9.2
 
 ### Patch Changes

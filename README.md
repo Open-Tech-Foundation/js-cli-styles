@@ -1,8 +1,10 @@
+<img align="left" src="https://open-tech-foundation.pages.dev/img/Logo.svg" width="50" height="50">
+
+&nbsp;[OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
+
 <div align="center">
 
 # CLI Styles
-
-⚡ by [OPEN TECH FOUNDATION](https://open-tech-foundation.pages.dev/)
 
 [![Build](https://github.com/open-tech-foundation/js-cli-styles/actions/workflows/build.yml/badge.svg)](https://github.com/open-tech-foundation/js-cli-styles/actions/workflows/build.yml)
 

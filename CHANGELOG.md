@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.10.1
+
+### Patch Changes
+
+- 07be3b9: Updated pkg keywords.
+
 ## 0.10.0
 
 ### Minor Changes

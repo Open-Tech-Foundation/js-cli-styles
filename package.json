@@ -10,7 +10,9 @@
     "text",
     "color",
     "format",
-    "console"
+    "console",
+    "log",
+    "terminal"
   ],
   "author": {
     "name": "Thanga Ganapathy",

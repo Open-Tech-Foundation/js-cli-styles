@@ -12,6 +12,9 @@
 
 > Style your CLI text using [ANSI](https://en.wikipedia.org/wiki/ANSI_escape_code) escape sequences.
 
+# You can now try it online at [node-repl.pages.dev](https://node-repl.pages.dev/)
+
+
 ## Features
 
 - 24-Bit colors only (True Color)

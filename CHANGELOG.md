@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.10.2
+
+### Patch Changes
+
+- f5fa300: Updated readme with node-repl link.
+
 ## 0.10.1
 
 ### Patch Changes

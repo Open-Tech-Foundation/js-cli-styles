@@ -1,6 +1,6 @@
 {
   "name": "@opentf/cli-styles",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Style your CLI text using ANSI escape sequences.",
   "keywords": [
     "ansi",

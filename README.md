@@ -12,8 +12,9 @@
 
 > Style your CLI text using [ANSI](https://en.wikipedia.org/wiki/ANSI_escape_code) escape sequences.
 
-# You can now try it online at [node-repl.pages.dev](https://node-repl.pages.dev/)
+## Try it online at [https://node-repl.pages.dev](https://node-repl.pages.dev/)
 
+### [@opentf/utils](https://js-utils.pages.dev/) - Our new JavaScript utility library, please review and give feedback.
 
 ## Features
 

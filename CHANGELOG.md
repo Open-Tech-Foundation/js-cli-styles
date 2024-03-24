@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.10.3
+
+### Patch Changes
+
+- 13cc6ed: Updated readme with new util lib announcement.
+
 ## 0.10.2
 
 ### Patch Changes

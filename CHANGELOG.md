@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.11.1
+
+### Patch Changes
+
+- 7394e1a: Changed std pkg url.
+
 ## 0.11.0
 
 ### Minor Changes

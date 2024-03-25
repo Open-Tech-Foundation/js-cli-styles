@@ -80,6 +80,6 @@
     "provenance": true
   },
   "dependencies": {
-    "@opentf/utils": "^0.40.0"
+    "@opentf/std": "^0.1.0"
   }
 }

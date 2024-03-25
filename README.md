@@ -14,7 +14,7 @@
 
 ## Try it online at [https://node-repl.pages.dev](https://node-repl.pages.dev/)
 
-### [@opentf/utils](https://js-utils.pages.dev/) - Our new JavaScript utility library, please review and give feedback.
+### [@opentf/std](https://js-utils.pages.dev/) - Our new JavaScript utility library, please review and give feedback.
 
 ## Features
 
@@ -329,7 +329,7 @@ https://developer.chrome.com/docs/devtools/console/format-style/
 
 ## Related
 
-- [@opentf/utils](https://www.npmjs.com/package/@opentf/utils) - A collection of JavaScript utility functions.
+- [@opentf/std](https://www.npmjs.com/package/@opentf/std) - A collection of JavaScript utility functions.
 
 - [@opentf/cli-pbar](https://www.npmjs.com/package/@opentf/cli-pbar) - CLI progress bar.
 

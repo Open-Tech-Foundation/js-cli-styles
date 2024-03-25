@@ -1,4 +1,4 @@
-import { hexToRGB } from '@opentf/utils';
+import { hexToRGB } from '@opentf/std';
 
 const reset = '\x1B[0m';
 

@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@opentf/utils':
-    specifier: ^0.40.0
-    version: 0.40.0
+  '@opentf/std':
+    specifier: ^0.1.0
+    version: 0.1.0
 
 devDependencies:
   '@changesets/cli':
@@ -1632,8 +1632,8 @@ packages:
       - typescript
     dev: true
 
-  /@opentf/utils@0.40.0:
-    resolution: {integrity: sha512-1RoLrce9sHBTr1m8BXx/ZWTSD2zZsBn0e6pqkd+apGVDgQOSy4/aGy21WiUR3CSZ9IPUjVqFZIX6ExMFDIpscg==}
+  /@opentf/std@0.1.0:
+    resolution: {integrity: sha512-5fCii/IbRRvfjlIRecjLQCneHVMQDCkXtZLaVCHx2MRQU29dq3yZ+x3HZe+eTK9XgXRp/my2FNnTQBc0MmdAVA==}
     dev: false
 
   /@pkgr/core@0.1.1:

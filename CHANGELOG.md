@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.11.0
+
+### Minor Changes
+
+- c9016ae: Changed old utils to new std.
+
 ## 0.10.3
 
 ### Patch Changes

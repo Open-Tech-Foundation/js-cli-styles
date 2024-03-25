@@ -14,7 +14,7 @@
 
 ## Try it online at [https://node-repl.pages.dev](https://node-repl.pages.dev/)
 
-### [@opentf/std](https://js-std.pages.dev/) - Our new JavaScript utility library, please review and give feedback.
+### [@opentf/std](https://js-std.pages.dev/) - An Extensive JavaScript Standard Library, please review and give feedback.
 
 ## Features
 

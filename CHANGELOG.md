@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.11.2
+
+### Patch Changes
+
+- 18ee21c: Updated readme.
+
 ## 0.11.1
 
 ### Patch Changes

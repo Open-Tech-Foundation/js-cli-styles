@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.12.0
+
+### Minor Changes
+
+- 865c532: Fixed missing ANSI style end code.
+
 ## 0.11.2
 
 ### Patch Changes

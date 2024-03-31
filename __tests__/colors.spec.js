@@ -21,6 +21,12 @@ describe('colors', () => {
     expect(style('$b{BLUE}')).toEqual('\x1B[38;2;0;116;217mBLUE\x1B[0m');
   });
 
+  it('renders magenta fg color', () => {
+    expect(style('$m{Magenta}')).toEqual(
+      '\x1B[38;2;255;105;193mMagenta\x1B[0m'
+    );
+  });
+
   it('renders orange fg color', () => {
     expect(style('$o{ORANGE}')).toEqual('\x1B[38;2;255;133;27mORANGE\x1B[0m');
   });
@@ -163,6 +169,12 @@ describe('colors', () => {
     );
   });
 
+  it('renders bg magenta fg color', () => {
+    expect(style('$bgm{Magenta}')).toEqual(
+      '\x1B[48;2;255;105;193mMagenta\x1B[0m'
+    );
+  });
+
   it('renders multiple fg colors', () => {
     expect(style('$r{RED}$g{GREEN}$b{BLUE}')).toEqual(
       '\x1B[38;2;255;65;54mRED\x1B[0m\x1B[38;2;46;204;64mGREEN\x1B[0m\x1B[38;2;0;116;217mBLUE\x1B[0m'
@@ -175,7 +187,7 @@ describe('colors', () => {
         "$bgbl.b{THE QUICK $g{BROWN $r{CAT} JUMPED} OVER THE LAZY $r{DOG}'S BACK}"
       )
     ).toEqual(
-      "\x1B[48;2;17;17;17;38;2;0;116;217mTHE QUICK \x1B[0m\x1B[48;2;17;17;17;38;2;46;204;64mBROWN \x1B[0m\x1B[48;2;17;17;17;38;2;255;65;54mCAT\x1B[0m\x1B[48;2;17;17;17;38;2;46;204;64m JUMPED\x1B[0m\x1B[48;2;17;17;17;38;2;0;116;217m OVER THE LAZY \x1B[0m\x1B[48;2;17;17;17;38;2;255;65;54mDOG\x1B[0m\x1B[48;2;17;17;17;38;2;0;116;217m'S BACK\x1B[0m"
+      "\x1B[48;2;17;17;17m\x1B[38;2;0;116;217mTHE QUICK \x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;46;204;64mBROWN \x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;255;65;54mCAT\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;46;204;64m JUMPED\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;0;116;217m OVER THE LAZY \x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;255;65;54mDOG\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;0;116;217m'S BACK\x1B[0m"
     );
   });
 

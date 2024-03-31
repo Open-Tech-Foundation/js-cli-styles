@@ -252,6 +252,7 @@ style('$g.bol{SALE! -} $blk.r.bol{50% OFFER}');
 | o                     | Orange - rgb(255,133,27)                                                                                                                                            |
 | y                     | Yellow - rgb(255,220,0)                                                                                                                                             |
 | w                     | White - rgb(255,255,255)                                                                                                                                            |
+| m                     | Magenta - rgb(255,105,193)                                                                                                                                          |
 | bl                    | Black - rgb(17,17,17)                                                                                                                                               |
 | gr                    | Grey - rgb(170,170,170)                                                                                                                                             |
 | navy                  | Navy - rgb(0,31,63)                                                                                                                                                 |

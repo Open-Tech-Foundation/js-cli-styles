@@ -21,7 +21,7 @@ describe('cases', () => {
 
   it('renders styles with normal $ sign in a text', () => {
     expect(style('Price: $8.00 $g.blk{OFFER!}')).toEqual(
-      'Price: $8.00 \x1B[38;2;46;204;64;5mOFFER!\x1B[0m'
+      'Price: $8.00 \x1B[38;2;46;204;64m\x1B[5mOFFER!\x1B[0m'
     );
   });
 
@@ -33,5 +33,9 @@ describe('cases', () => {
 
   it('renders $ signs inbetween styles', () => {
     expect(style('$$r{\\$}$')).toEqual('$\x1B[38;2;255;65;54m$\x1B[0m$');
+  });
+
+  it('renders dimmed green unicode symbol', () => {
+    expect(style('$g.dim{➜}')).toEqual('\x1B[38;2;46;204;64m\x1B[2m➜\x1B[0m');
   });
 });

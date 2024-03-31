@@ -3,7 +3,7 @@ import { release } from 'node:os';
 export default function isSupportsColor() {
   const { env, argv } = process;
 
-  if ('FORCE_COLOR' in env) {
+  if (Object.hasOwn(env, 'FORCE_COLOR')) {
     if (parseInt(env['FORCE_COLOR'] as string) === 3) {
       return true;
     }

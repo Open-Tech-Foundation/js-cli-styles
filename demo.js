@@ -1,4 +1,4 @@
-import { style } from './dist/index.js';
+import { style } from './src';
 import hljs from 'highlight.js';
 import { decode } from 'html-entities';
 
@@ -59,7 +59,7 @@ run(
 run('$bol{foo $r.dun{bar} $ovl.o{hindi} baz} $und{UNDERLINE}');
 
 run(
-  'This is a $o.bgbl{Hello World} example, This is a $r.bol{RED} $g.ita{GREEN} $b.str{BLUE} $gr.dim{GREY} $y.und{YELLOW} $w.bgbl.inv{INVERSE} $bol.rgb(57,204,204){TEAL} $bgrgb(133,20,75).w.bol{MAROON} text.'
+  'This is a $o.bgbl{Hello World} example, This is a $r.bol{RED} $g.ita{GREEN} $b.str{BLUE} $gr.dim{GREY} $y.und{YELLOW} $w.bgbl.inv{INVERSE} $bol.rgb(57,204,204){TEAL} $bgrgb(133,20,75).w.bol{MAROON} $m{Magenta} text.'
 );
 
 run(
@@ -76,7 +76,7 @@ run(
 
 run('$bol.w.bgg{ PASS }');
 
-run('$inv.r.bgw.bol{ FAILED }');
+run('$r.bgw.bol.inv{ FAILED }');
 
 run('Normal text | $bol{Bold text} | $dim{Dimmed text}');
 

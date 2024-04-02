@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.14.0
+
+### Minor Changes
+
+- be1f172: Fixed invalid normal text modifier.
+
 ## 0.13.0
 
 ### Minor Changes

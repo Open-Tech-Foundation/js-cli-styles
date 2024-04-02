@@ -70,4 +70,10 @@ describe('Modifiers', () => {
   it('renders not strikethrough text', () => {
     expect(style('$nos{text}')).toEqual('\x1B[29mtext\x1B[0m');
   });
+
+  it('renders pink color text after dim, bold & nor', () => {
+    expect(style(`$pi.dim.bol.nor{-> Node.js process.version}`)).toEqual(
+      '\u001B[38;2;255;191;203m\u001B[22m-> Node.js process.version\u001B[0m'
+    );
+  });
 });

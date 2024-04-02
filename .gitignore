@@ -26,3 +26,5 @@ lib
 .parcel-cache
 .turbo
 play.js
+
+test.js

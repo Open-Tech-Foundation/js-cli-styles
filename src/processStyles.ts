@@ -54,15 +54,16 @@ export default function processStyles(styles: string) {
       } else {
         value = STANDARD_COLORS[style];
       }
-      map.set('color', { value, code: FG_CODE });
+      map.set('color', { value, code: FG_CODE, color: value });
       continue;
     }
 
     if (style === 'dim') {
       if (map.has('color')) {
+        const obj = map.get('color');
         map.set('color', {
-          value: dimColor(map.get('color').value),
-          code: FG_CODE,
+          ...obj,
+          value: dimColor(obj.value),
           dim: true,
         });
       } else {

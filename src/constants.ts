@@ -8,6 +8,8 @@ export const FG_CODE = '38;2;';
 
 export const BG_CODE = '48;2;';
 
+export const UND_COLOR_CODE = '58:2:0:';
+
 export const STANDARD_COLORS: Record<string, string> = {
   r: '255;65;54', // Red
   g: '46;204;64', // Green
@@ -18,28 +20,42 @@ export const STANDARD_COLORS: Record<string, string> = {
   bl: '17;17;17', // Black
   gr: '170;170;170', // Grey
   m: '255;105;193', // Magenta
-  navy: '0;31;63',
-  aqua: '127;219;255',
-  teal: '57;204;204',
-  purple: '177;13;201',
-  fuchsia: '240;18;190',
-  maroon: '133;20;75',
-  olive: '61;153;112',
-  lime: '1;255;112',
-  silver: '221;221;221',
-};
+  c: '154;236;254', // Cyan
+  n: '0;31;63', // Navy
+  a: '127;219;255', // Aqua
+  t: '57;204;204', // Teal
+  p: '177;13;201', // Purple
+  f: '240;18;190', // Fuchsia
+  ma: '133;20;75', // Maroon
+  ol: '61;153;112', // Olive
+  li: '1;255;112', // Lime
+  s: '221;221;221', // Silver
+  pi: '255;191;203', // Pink
+} as const;
 
-export const MODIFIERS: Record<string, string> = {
-  res: '0',
-  nor: '22',
-  blk: '5',
-  dun: '21',
-  hid: '8',
-  ovl: '53',
-  bol: '1',
-  dim: '2',
-  ita: '3',
-  und: '4',
-  inv: '7',
-  str: '9',
-};
+export const MODIFIERS = {
+  dfg: '39', // Default foreground color
+  dbg: '49', // Default background color
+  res: '0', // Reset
+  nor: '22', // Normal intensity
+  blk: '5', // Blink
+  nob: '25', // No Blink
+  hid: '8', // Hidden
+  vis: '28', // Visible
+  ovl: '53', // Overline
+  noo: '55', // No Overline
+  bol: '1', // Bold
+  dim: '2', // Dimmed text
+  ita: '3', // Italic
+  inv: '7', // Inverse fg to bg & vice versa
+  noi: '27', // Not inversed
+  str: '9', // Strikethrough
+  nos: '29', // No Strikethrough
+  und: '4', // Straight underline
+  dbu: '21', // Double underline
+  nou: '24', // No underline
+  cru: '4:3', // Curly underline
+  dou: '4:4', // Dotted underline
+  dau: '4:5', // Dashed underline
+  ruc: '59', // Reset underline color
+} as const;

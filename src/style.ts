@@ -1,3 +1,4 @@
+import { isStr, shallowMerge } from '@opentf/std';
 import applyStyles from './applyStyles';
 import isSupportsColor from './isSupportsColor';
 import parser, { type StyleObj } from './parser';
@@ -6,7 +7,7 @@ function renderWithStyles(obj: StyleObj, color: boolean) {
   let out = '';
 
   obj.text.forEach((t) => {
-    if (typeof t === 'string') {
+    if (isStr(t)) {
       out += color ? applyStyles(t, obj.styles) : t;
     } else {
       out += renderWithStyles(t, color);
@@ -17,28 +18,24 @@ function renderWithStyles(obj: StyleObj, color: boolean) {
 }
 
 function render(arr: (string | StyleObj)[], color: boolean) {
-  let out = '';
-  arr.forEach((item) => {
-    if (typeof item === 'string') {
-      out += item;
-    } else {
-      out += renderWithStyles(item, color);
-    }
-  });
-
-  return out;
+  return arr.reduce((acc, cur) => {
+    return (acc += isStr(cur) ? cur : renderWithStyles(cur, color));
+  }, '') as string;
 }
 
-export default function style(
-  str: string,
-  options?: { color: boolean }
-): string {
-  let color = options && 'color' in options ? options.color : true;
-  if (color) {
-    color = isSupportsColor();
+type Options = {
+  color?: boolean;
+};
+
+export default function style(str: string, options?: Options): string {
+  const opts = shallowMerge(
+    { color: true },
+    options as object
+  ) as Required<Options>;
+  if (opts.color) {
+    opts.color = isSupportsColor();
   }
   const parsedValue = parser(str);
-  const out = render(parsedValue, color);
 
-  return out;
+  return render(parsedValue, opts.color);
 }

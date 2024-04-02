@@ -27,6 +27,14 @@ describe('colors', () => {
     );
   });
 
+  it('renders pink fg color', () => {
+    expect(style('$pi{Pink}')).toEqual('\x1B[38;2;255;191;203mPink\x1B[0m');
+  });
+
+  it('renders cyan fg color', () => {
+    expect(style('$c{Cyan}')).toEqual('\x1B[38;2;154;236;254mCyan\x1B[0m');
+  });
+
   it('renders orange fg color', () => {
     expect(style('$o{ORANGE}')).toEqual('\x1B[38;2;255;133;27mORANGE\x1B[0m');
   });
@@ -48,47 +56,39 @@ describe('colors', () => {
   });
 
   it('renders navy fg color', () => {
-    expect(style('$navy{NAVY}')).toEqual('\x1B[38;2;0;31;63mNAVY\x1B[0m');
+    expect(style('$n{NAVY}')).toEqual('\x1B[38;2;0;31;63mNAVY\x1B[0m');
   });
 
   it('renders aqua fg color', () => {
-    expect(style('$aqua{AQUA}')).toEqual('\x1B[38;2;127;219;255mAQUA\x1B[0m');
+    expect(style('$a{AQUA}')).toEqual('\x1B[38;2;127;219;255mAQUA\x1B[0m');
   });
 
   it('renders teal fg color', () => {
-    expect(style('$teal{TEAL}')).toEqual('\x1B[38;2;57;204;204mTEAL\x1B[0m');
+    expect(style('$t{TEAL}')).toEqual('\x1B[38;2;57;204;204mTEAL\x1B[0m');
   });
 
   it('renders purple fg color', () => {
-    expect(style('$purple{PURPLE}')).toEqual(
-      '\x1B[38;2;177;13;201mPURPLE\x1B[0m'
-    );
+    expect(style('$p{PURPLE}')).toEqual('\x1B[38;2;177;13;201mPURPLE\x1B[0m');
   });
 
   it('renders fuchsia fg color', () => {
-    expect(style('$fuchsia{FUCHSIA}')).toEqual(
-      '\x1B[38;2;240;18;190mFUCHSIA\x1B[0m'
-    );
+    expect(style('$f{FUCHSIA}')).toEqual('\x1B[38;2;240;18;190mFUCHSIA\x1B[0m');
   });
 
   it('renders maroon fg color', () => {
-    expect(style('$maroon{MAROON}')).toEqual(
-      '\x1B[38;2;133;20;75mMAROON\x1B[0m'
-    );
+    expect(style('$ma{MAROON}')).toEqual('\x1B[38;2;133;20;75mMAROON\x1B[0m');
   });
 
   it('renders olive fg color', () => {
-    expect(style('$olive{OLIVE}')).toEqual('\x1B[38;2;61;153;112mOLIVE\x1B[0m');
+    expect(style('$ol{OLIVE}')).toEqual('\x1B[38;2;61;153;112mOLIVE\x1B[0m');
   });
 
   it('renders lime fg color', () => {
-    expect(style('$lime{LIME}')).toEqual('\x1B[38;2;1;255;112mLIME\x1B[0m');
+    expect(style('$li{LIME}')).toEqual('\x1B[38;2;1;255;112mLIME\x1B[0m');
   });
 
   it('renders silver fg color', () => {
-    expect(style('$silver{SILVER}')).toEqual(
-      '\x1B[38;2;221;221;221mSILVER\x1B[0m'
-    );
+    expect(style('$s{SILVER}')).toEqual('\x1B[38;2;221;221;221mSILVER\x1B[0m');
   });
 
   it('renders bg red color', () => {
@@ -124,47 +124,41 @@ describe('colors', () => {
   });
 
   it('renders bg navy color', () => {
-    expect(style('$bgnavy{NAVY}')).toEqual('\x1B[48;2;0;31;63mNAVY\x1B[0m');
+    expect(style('$bgn{NAVY}')).toEqual('\x1B[48;2;0;31;63mNAVY\x1B[0m');
   });
 
   it('renders bg aqua color', () => {
-    expect(style('$bgaqua{AQUA}')).toEqual('\x1B[48;2;127;219;255mAQUA\x1B[0m');
+    expect(style('$bga{AQUA}')).toEqual('\x1B[48;2;127;219;255mAQUA\x1B[0m');
   });
 
   it('renders bg teal color', () => {
-    expect(style('$bgteal{TEAL}')).toEqual('\x1B[48;2;57;204;204mTEAL\x1B[0m');
+    expect(style('$bgt{TEAL}')).toEqual('\x1B[48;2;57;204;204mTEAL\x1B[0m');
   });
 
   it('renders bg purple color', () => {
-    expect(style('$bgpurple{PURPLE}')).toEqual(
-      '\x1B[48;2;177;13;201mPURPLE\x1B[0m'
-    );
+    expect(style('$bgp{PURPLE}')).toEqual('\x1B[48;2;177;13;201mPURPLE\x1B[0m');
   });
 
   it('renders bg fuchsia color', () => {
-    expect(style('$bgfuchsia{FUCHSIA}')).toEqual(
+    expect(style('$bgf{FUCHSIA}')).toEqual(
       '\x1B[48;2;240;18;190mFUCHSIA\x1B[0m'
     );
   });
 
   it('renders bg maroon color', () => {
-    expect(style('$bgmaroon{MAROON}')).toEqual(
-      '\x1B[48;2;133;20;75mMAROON\x1B[0m'
-    );
+    expect(style('$bgma{MAROON}')).toEqual('\x1B[48;2;133;20;75mMAROON\x1B[0m');
   });
 
   it('renders bg olive color', () => {
-    expect(style('$bgolive{OLIVE}')).toEqual(
-      '\x1B[48;2;61;153;112mOLIVE\x1B[0m'
-    );
+    expect(style('$bgol{OLIVE}')).toEqual('\x1B[48;2;61;153;112mOLIVE\x1B[0m');
   });
 
   it('renders bg lime color', () => {
-    expect(style('$bglime{LIME}')).toEqual('\x1B[48;2;1;255;112mLIME\x1B[0m');
+    expect(style('$bgli{LIME}')).toEqual('\x1B[48;2;1;255;112mLIME\x1B[0m');
   });
 
   it('renders bg silver color', () => {
-    expect(style('$bgsilver{SILVER}')).toEqual(
+    expect(style('$bgs{SILVER}')).toEqual(
       '\x1B[48;2;221;221;221mSILVER\x1B[0m'
     );
   });
@@ -236,5 +230,17 @@ describe('colors', () => {
     expect(
       style('This is will be normal $r{RED} string', { color: false })
     ).toEqual('This is will be normal RED string');
+  });
+
+  it('renders default fg color within red color', () => {
+    expect(style('$r{Straight $dfg{sometext} underline}')).toEqual(
+      '\u001B[38;2;255;65;54mStraight \u001B[0m\u001B[39msometext\u001B[0m\u001B[38;2;255;65;54m underline\u001B[0m'
+    );
+  });
+
+  it('renders default bg color within yellow bg color text', () => {
+    expect(style('$bgy{Straight $dbg{some text} underline}')).toEqual(
+      '\u001B[48;2;255;220;0mStraight \u001B[0m\u001B[49msome text\u001B[0m\u001B[48;2;255;220;0m underline\u001B[0m'
+    );
   });
 });

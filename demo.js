@@ -6,9 +6,9 @@ function highlight(code) {
   let html = hljs.highlight(code, {
     language: 'js',
   }).value;
-  html = html.replaceAll('<span class="hljs-keyword">', '$fuchsia{');
+  html = html.replaceAll('<span class="hljs-keyword">', '$f{');
   html = html.replaceAll('<span class="hljs-variable language_">', '$b{');
-  html = html.replaceAll('<span class="hljs-title function_">', '$lime{');
+  html = html.replaceAll('<span class="hljs-title function_">', '$li{');
   html = html.replaceAll('<span class="hljs-string">', '$y{');
   html = html.replaceAll('<span class="hljs-params"></span>', '');
   html = html.replaceAll('<span class="hljs-comment">', '$gr.dim{');
@@ -26,7 +26,7 @@ function greet() {
 
 console.log(highlight(code));
 
-function run(str, color = true) {
+function print(str, color = true) {
   console.log();
   console.log(str);
   console.log();
@@ -40,62 +40,76 @@ const disk = 70;
 
 const getColor = (n) => (n <= 50 ? 'g' : n > 50 && n <= 70 ? 'y' : 'r');
 
-run(`
+print(`
  CPU: $${getColor(cpu)}{${cpu}%}
  RAM: $${getColor(ram)}{${ram}%}
 DISK: $${getColor(disk)}{${disk}%}
 `);
 
-run('$r{RED} $r.bol{RED} $r.dim{RED}');
+print('$r{RED} $r.bol{RED} $r.dim{RED}');
 
-run('$g.bol{SALE! - $blk.r{50% OFFER}}');
+print('$g.bol{SALE! - $blk.r{50% OFFER}}');
 
-run('This is normal string $r{RED} $g{GREEN}');
+print('This is normal string $r{RED} $g{GREEN}');
 
-run(
+print(
   "$bgbl.b{THE QUICK $g{BROWN $r.bol{CAT} JUMPED} OVER THE LAZY $r.bol{DOG}'S BACK}"
 );
 
-run('$bol{foo $r.dun{bar} $ovl.o{hindi} baz} $und{UNDERLINE}');
+print('$bol{foo $r.dbu{bar} $ovl.o{hindi} baz} $und{UNDERLINE}');
 
-run(
+print(
   'This is a $o.bgbl{Hello World} example, This is a $r.bol{RED} $g.ita{GREEN} $b.str{BLUE} $gr.dim{GREY} $y.und{YELLOW} $w.bgbl.inv{INVERSE} $bol.rgb(57,204,204){TEAL} $bgrgb(133,20,75).w.bol{MAROON} $m{Magenta} text.'
 );
 
-run(
+print(
   '🍊 - An $o{orange} is a fruit of various citrus species in the family Rutaceae.'
 );
 
-run(
+print(
   `$bgy.bl{The $r.bol{R}$g.bol{G}$b.bol{B} color model is an additive color model in which the $r.bol{red}, $g.bol{green} and $b.bol{blue} primary colors of light are added together in various ways to reproduce a broad array of colors.}`
 );
 
-run(
+print(
   '$g{I am a green line $b.und.bol{with a blue substring} that becomes green again!}'
 );
 
-run('$bol.w.bgg{ PASS }');
+print('$bol.w.bgg{ PASS }');
 
-run('$r.bgw.bol.inv{ FAILED }');
+print('$r.bgw.bol.inv{ FAILED }');
 
-run('Normal text | $bol{Bold text} | $dim{Dimmed text}');
+print('Normal text | $bol{Bold text} | $dim{Dimmed text}');
 
-run(
-  '$ita.fuchsia.bol.bgw{"This poem is endless,\n the odds against us are endless,\n our chances of being alive together statistically nonexistent;\n still we have made it"}'
+print(
+  '$ita.f.bol.bgw{"This poem is endless,\n the odds against us are endless,\n our chances of being alive together statistically nonexistent;\n still we have made it"}'
 );
 
-run('Highlighted fruits: $und{Apple}, cat, $und{Banana}');
+print('Highlighted fruits: $und{Apple}, cat, $und{Banana}');
 
-run('Price: $str.r{\\$75.00} $g{\\$50.00}');
+print('Price: $str.r{\\$75.00} $g{\\$50.00}');
 
-run('$rgb(197, 24, 117){Some random rgb text}');
+print('$rgb(197, 24, 117){Some random rgb text}');
 
-run('$rgb(157,154,117){RGB text without space}');
+print('$rgb(157,154,117){RGB text without space}');
 
-run('$bgrgb(5, 255, 55).navy.bol{Some random rgb text}');
+print('$bgrgb(5, 255, 55).n.bol{Some random rgb text}');
 
-run('$inv{inverse}');
+print('$inv{inverse}');
 
-run(
+print(
   `<$hex(#39CCCC){input} name=$y{"price"} value=$y{"\\$\\{ Cost + Tax \\}.00"} />`
 );
+
+print('$und{Straight underline}');
+print('$und{Straight $nou{(No underline here)}  underline}');
+print('$dbu{Double underline}');
+print('$cru{Curly underline}');
+print('$dou{Dotted underline}');
+print('$dau{Dashed underline}');
+print('$und.ug{Straight underline colored}');
+print('$dbu.uy{Double underline colored}');
+print('$cru.ur{Curly underline colored}');
+print('$dou.ub{Dotted underline colored}');
+print('$dau.uo{Dashed underline colored}');
+print('$und.urgb(100,200,255){Straight underline RGB colored}');
+print('$und.ub{Straight $ruc{underline reset} colored}');

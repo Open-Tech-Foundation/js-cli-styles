@@ -12,9 +12,17 @@
 
 > Style your CLI text using [ANSI](https://en.wikipedia.org/wiki/ANSI_escape_code) escape sequences.
 
-## Try it online at [https://node-repl.pages.dev](https://node-repl.pages.dev/)
+<div align="center">
 
-### [@opentf/std](https://js-std.pages.dev/) - An Extensive JavaScript Standard Library, please review and give feedback.
+**Try it online at [https://node-repl.pages.dev](https://node-repl.pages.dev/)**
+
+</div>
+
+---
+
+🚀 [@opentf/std](https://js-std.pages.dev/) - An Extensive JavaScript Standard Library. Please review and give feedback.
+
+---
 
 ## Features
 
@@ -74,6 +82,10 @@ yarn add @opentf/cli-styles
 pnpm add @opentf/cli-styles
 ```
 
+```shell
+bun add @opentf/cli-styles
+```
+
 ## Syntax
 
 ```ts
@@ -85,7 +97,8 @@ style(str: string, options?: { color: boolean }): string;
 ```ts
 import { style } from '@opentf/cli-styles';
 
-style('$key[.key...]{Text}');
+const out = style('$key[.key...]{Text}');
+console.log(out);
 ```
 
 ## Examples
@@ -157,10 +170,24 @@ style(
 Underlined texts
 
 ```ts
-style('Highlighted fruits: $und{Apple}, cat, $und{Banana}');
+style('$und{Straight underline}');
+style('$und{Straight $nou{(No underline here)}  underline}');
+style('$dbu{Double underline}');
+style('$cru{Curly underline}');
+style('$dou{Dotted underline}');
+style('$dau{Dashed underline}');
+style('$und.ug{Straight underline colored}');
+style('$dbu.uy{Double underline colored}');
+style('$cru.ur{Curly underline colored}');
+style('$dou.ub{Dotted underline colored}');
+style('$dau.uo{Dashed underline colored}');
+style('$und.urgb(100,200,255){Straight underline RGB colored}');
+style('$und.ub{Straight $ruc{underline reset} colored}');
 ```
 
-![](assets/underline.png)
+![Underline Demo](assets/Underline-Demo.png)
+
+\*Output from VS Code.
 
 Strikethrough text
 
@@ -224,7 +251,7 @@ DISK: $${getColor(disk)}{${disk}%}
 
 Escape characters:
 
-Use double back slashes to escape a character in a string.
+Use double back slashes to escape a character in the string.
 
 ```ts
 style(
@@ -244,46 +271,60 @@ style('$g.bol{SALE! -} $blk.r.bol{50% OFFER}');
 
 ## Color Keys
 
-| Key                   | Description                                                                                                                                                         |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| r                     | Red - rgb(255,65,54)                                                                                                                                                |
-| g                     | Green - rgb(46,204,64)                                                                                                                                              |
-| b                     | Blue - rgb(0,116,217)                                                                                                                                               |
-| o                     | Orange - rgb(255,133,27)                                                                                                                                            |
-| y                     | Yellow - rgb(255,220,0)                                                                                                                                             |
-| w                     | White - rgb(255,255,255)                                                                                                                                            |
-| m                     | Magenta - rgb(255,105,193)                                                                                                                                          |
-| bl                    | Black - rgb(17,17,17)                                                                                                                                               |
-| gr                    | Grey - rgb(170,170,170)                                                                                                                                             |
-| navy                  | Navy - rgb(0,31,63)                                                                                                                                                 |
-| aqua                  | Aqua - rgb(127,219,255)                                                                                                                                             |
-| teal                  | Teal - rgb(57,204,204)                                                                                                                                              |
-| purple                | Purple - rgb(177,13,201)                                                                                                                                            |
-| fuchsia               | Fuchsia - rgb(240,18,190)                                                                                                                                           |
-| maroon                | Maroon - rgb(133,20,75)                                                                                                                                             |
-| olive                 | Olive - rgb(61,153,112)                                                                                                                                             |
-| lime                  | Lime - rgb(1,255,112)                                                                                                                                               |
-| silver                | Silver - rgb(221,221,221)                                                                                                                                           |
-| rgb(red, green, blue) | The RGB colors, Eg: rgb(255,0,0) for red color                                                                                                                      |
-| hex(#------)          | The 6-digit Hex colors, Eg: hex(#00ff00) for green color                                                                                                            |
-| bg\*                  | The background colors can be applied with prefix `bg` to any color keys.<br> Eg: <br/>bgw for white bg<br/>bgrgb(0,0,0) for black bg<br/>bghex(#0000FF) for blue bg |
+| Key                    | Description                                                                                                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| r                      | Red - rgb(255,65,54)                                                                                                                                                |
+| g                      | Green - rgb(46,204,64)                                                                                                                                              |
+| b                      | Blue - rgb(0,116,217)                                                                                                                                               |
+| o                      | Orange - rgb(255,133,27)                                                                                                                                            |
+| y                      | Yellow - rgb(255,220,0)                                                                                                                                             |
+| w                      | White - rgb(255,255,255)                                                                                                                                            |
+| m                      | Magenta - rgb(255,105,193)                                                                                                                                          |
+| c                      | Cyan - rgb(154, 236, 254)                                                                                                                                           |
+| n                      | Navy - rgb(0,31,63)                                                                                                                                                 |
+| a                      | Aqua - rgb(127,219,255)                                                                                                                                             |
+| t                      | Teal - rgb(57,204,204)                                                                                                                                              |
+| p                      | Purple - rgb(177,13,201)                                                                                                                                            |
+| f                      | Fuchsia - rgb(240,18,190)                                                                                                                                           |
+| s                      | Silver - rgb(221,221,221)                                                                                                                                           |
+| ma                     | Maroon - rgb(133,20,75)                                                                                                                                             |
+| ol                     | Olive - rgb(61,153,112)                                                                                                                                             |
+| li                     | Lime - rgb(1,255,112)                                                                                                                                               |
+| bl                     | Black - rgb(17,17,17)                                                                                                                                               |
+| gr                     | Grey - rgb(170,170,170)                                                                                                                                             |
+| pi                     | Pink - rgb(255, 191, 203)                                                                                                                                           |
+| rgb(red, green, blue)  | The RGB foreground colors, Eg: rgb(255,0,0) for red color.                                                                                                          |
+| urgb(red, green, blue) | The RGB underlined colors, Eg: urgb(255, 255, 0) for yellow underlined color.                                                                                       |
+| hex(#------)           | The 6-digit Hex colors, Eg: hex(#00ff00) for green color.                                                                                                           |
+| bg\*                   | The background colors can be applied with prefix `bg` to any color keys.<br> Eg: <br/>bgw for white bg<br/>bgrgb(0,0,0) for black bg<br/>bghex(#0000FF) for blue bg |
+| u\*                    | The underline colors.                                                                                                                                               |
 
 ## Modifier Keys
 
-| Key | Description                           |
-| --- | ------------------------------------- |
-| res | Reset all attributes to normal        |
-| nor | Normal intensity Neither bold nor dim |
-| bol | Bold or increased intensity text      |
-| dim | Dimmed or decreased intensity text    |
-| ita | Italic text                           |
-| und | Underlined text                       |
-| inv | Swap foreground and background colors |
-| str | Strikethrough text                    |
-| hid | Hidden text                           |
-| dun | Double underlined text                |
-| ovl | Overlined text                        |
-| blk | Blinking text                         |
+| Key | Description                            |
+| --- | -------------------------------------- |
+| res | Reset all attributes to normal.        |
+| nor | Normal intensity Neither bold nor dim. |
+| bol | Bold or increased intensity text.      |
+| dim | Dimmed or decreased intensity text.    |
+| ita | Italic text.                           |
+| inv | Swap foreground and background colors. |
+| noi | Not inversed.                          |
+| str | Strikethrough text.                    |
+| nos | Not Strikethrough text.                |
+| hid | Hidden text.                           |
+| vis | Visible text.                          |
+| und | Straight underline text.               |
+| nou | No Underlined text.                    |
+| dbu | Doubly Underlined text.                |
+| cru | Curly Underlined text.                 |
+| dou | Dotted Underlined text.                |
+| dau | Dashed Underlined text.                |
+| ruc | Reset Underlined text color.           |
+| ovl | Overlined text.                        |
+| noo | Not Overlined text.                    |
+| blk | Blinking text.                         |
+| nob | No Blinking text.                      |
 
 ## Color Overrides
 
@@ -299,20 +340,21 @@ You can force enable colors/styles by setting `FORCE_COLOR=3` in enviroment vari
 
 ## Modifier Keys Supported Terminals
 
-| Key | Supported Terminals                                                                                                                                                                                                       |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| res | ✅ Gnome Terminal<br/> ✅ Konsole <br/> ✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ iTerm2<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Alacritty<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal |
-| nor | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
-| bol | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
-| dim | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
-| ita | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
-| und | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
-| inv | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
-| str | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>✅ iTerm2<br/>✅ Alacritty    |
-| hid | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>✅ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>✅ Alacritty    |
-| dun | ✅ Gnome Terminal<br/>❌ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>✅ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>✅ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty    |
-| ovl | ✅ Gnome Terminal<br/>✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>✅ VS Code<br/>❌ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty    |
-| blk | ✅ Gnome Terminal<br/> ✅ Konsole<br/>✅ xfce4-terminal<br/>✅ MATE Terminal<br/>❌ VS Code<br/>❌ Tabby<br/>❌ Hyper<br/>✅ Contour<br/>❌ kitty<br/>✅ WezTerm<br/>✅ Windows Terminal<br/>❌ iTerm2<br/>❌ Alacritty   |
+| Supported Terminals | res | nor | bol | dim | ita | inv | str | hid | ovl | blk | und | dbu |
+| ------------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Gnome Terminal      | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
+| Konsole             | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ❌  |
+| xfce4-terminal      | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
+| MATE Terminal       | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
+| iTerm2              | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ❌  | ❌  | ❌  | ✅  | ❌  |
+| VS Code             | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ❌  | ✅  | ✅  |
+| Tabby               | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ❌  | ❌  | ✅  | ✅  |
+| Hyper               | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ❌  | ❌  | ✅  | ❌  |
+| Alacritty           | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ❌  | ❌  | ✅  | ❌  |
+| Contour             | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
+| kitty               | ✅  | ✅  | ✅  | ✅  | ❌  | ✅  | ✅  | ❌  | ❌  | ❌  | ✅  | ✅  |
+| WezTerm             | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
+| Windows Terminal    | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
 
 ## References
 
@@ -332,7 +374,7 @@ https://developer.chrome.com/docs/devtools/console/format-style/
 
 - [@opentf/std](https://www.npmjs.com/package/@opentf/std) - A collection of JavaScript utility functions.
 
-- [@opentf/cli-pbar](https://www.npmjs.com/package/@opentf/cli-pbar) - CLI progress bar.
+- [@opentf/cli-pbar](https://www.npmjs.com/package/@opentf/cli-pbar) - The CLI progress bar.
 
 ## License
 

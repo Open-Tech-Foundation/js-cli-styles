@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.13.0
+
+### Minor Changes
+
+- 0c179fb: Fixed dim issues in popular terminals & added full support for underline with colors.
+
 ## 0.12.0
 
 ### Minor Changes

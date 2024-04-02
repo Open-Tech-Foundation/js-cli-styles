@@ -372,7 +372,7 @@ https://developer.chrome.com/docs/devtools/console/format-style/
 
 ## Related
 
-- [@opentf/std](https://www.npmjs.com/package/@opentf/std) - A collection of JavaScript utility functions.
+- [@opentf/std](https://js-std.pages.dev/) - An Extensive JavaScript Standard Library.
 
 - [@opentf/cli-pbar](https://www.npmjs.com/package/@opentf/cli-pbar) - The CLI progress bar.
 

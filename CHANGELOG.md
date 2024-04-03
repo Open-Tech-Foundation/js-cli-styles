@@ -1,5 +1,11 @@
 # @opentf/cli-styles
 
+## 0.15.0
+
+### Minor Changes
+
+- a985ee3: Fixed not ignoring invalid color keys.
+
 ## 0.14.0
 
 ### Minor Changes

@@ -9,6 +9,18 @@ afterAll(() => {
 });
 
 describe('cases', () => {
+  it('renders plain text if invalid styles passed', () => {
+    expect(style('$ab{This is a normal text without any styles.}')).toEqual(
+      'This is a normal text without any styles.'
+    );
+    expect(style('$bgab{This is a normal text without any styles.}')).toEqual(
+      'This is a normal text without any styles.'
+    );
+    expect(style('$rgb[]{This is a normal text without any styles.}')).toEqual(
+      'This is a normal text without any styles.'
+    );
+  });
+
   it('renders plain text', () => {
     expect(style('This is a normal text without any styles.')).toEqual(
       'This is a normal text without any styles.'

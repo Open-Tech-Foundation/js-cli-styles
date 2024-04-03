@@ -78,6 +78,11 @@ export default function processStyles(styles: string) {
         .split(',')
         .map((v) => v.trim())
         .join(';');
+
+      if (!s) {
+        continue;
+      }
+
       map.delete('fg');
       map.set('color', { value: s, code: FG_CODE });
       continue;
@@ -109,6 +114,9 @@ export default function processStyles(styles: string) {
         .split(',')
         .map((v) => v.trim())
         .join(';');
+      if (!s) {
+        continue;
+      }
       map.delete('fg');
       map.set('bgcolor', {
         value: s,
@@ -117,7 +125,7 @@ export default function processStyles(styles: string) {
       continue;
     }
 
-    if (style.startsWith('bg')) {
+    if (style.startsWith('bg') && colorKeys.includes(style.slice(2))) {
       map.delete('bg');
       map.set('bgcolor', {
         value: STANDARD_COLORS[style.slice(2)],
@@ -232,7 +240,7 @@ export default function processStyles(styles: string) {
         .slice(5, -1)
         .split(',')
         .map((v) => v.trim())
-        .join(';');
+        .join(':');
       map.set('uColor', { value: s, code: UND_COLOR_CODE });
       continue;
     }
@@ -258,12 +266,11 @@ export default function processStyles(styles: string) {
       continue;
     }
 
-    if (style.startsWith('u')) {
+    if (style.startsWith('u') && colorKeys.includes(style.slice(1))) {
       map.set('uColor', {
         value: STANDARD_COLORS[style.slice(1)]?.replaceAll(';', ':'),
         code: UND_COLOR_CODE,
       });
-      continue;
     }
   }
 

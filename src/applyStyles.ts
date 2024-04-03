@@ -1,3 +1,4 @@
+import { isEmpty } from '@opentf/std';
 import { ANSI_END, ANSI_START, RESET } from './constants';
 import processStyles from './processStyles';
 
@@ -8,6 +9,10 @@ export default function applyStyles(str: string, styles: string): string {
 
   let out = '';
   const styleMap = processStyles(styles);
+
+  if (isEmpty(styleMap)) {
+    return str;
+  }
 
   for (const v of styleMap.values()) {
     out += ANSI_START + v.code + v.value + ANSI_END;

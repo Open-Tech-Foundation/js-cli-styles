@@ -7,270 +7,155 @@ import {
   UND_COLOR_CODE,
 } from './constants';
 
-const colorKeys = Object.keys(STANDARD_COLORS);
+const colorKeySet = new Set(Object.keys(STANDARD_COLORS));
+
+const pairedModifiers = {
+  inv: 'noi',
+  noi: 'inv',
+  hid: 'vis',
+  vis: 'hid',
+  blk: 'nob',
+  nob: 'blk',
+  ovl: 'noo',
+  noo: 'ovl',
+  str: 'nos',
+  nos: 'str',
+};
 
 function dimColor(color: string) {
   return color
     .split(';')
-    .map((c) => parseInt(c) * (1 / 2))
-    .map((c) => Math.floor(c))
+    .map((c) => Math.floor(parseInt(c, 10) / 2))
     .join(';');
 }
+
+const underlineStyles = new Set(['und', 'dbu', 'cru', 'dou', 'dau']);
+
+const keywordHandlers: Record<string, (map: Map<string, any>) => void> = {
+  bol: (map) => {
+    map.delete('nor');
+    map.set('bold', { value: MODIFIERS.bol, code: '' });
+  },
+  res: (map) => {
+    map.clear();
+    map.set('reset', { value: MODIFIERS.res, code: '' });
+  },
+  dfg: (map) => {
+    map.delete('color');
+    map.set('dfg', { value: MODIFIERS.dfg, code: '' });
+  },
+  dbg: (map) => {
+    map.delete('bgcolor');
+    map.set('dbg', { value: MODIFIERS.dbg, code: '' });
+  },
+  ita: (map) => {
+    map.set('ita', { value: MODIFIERS.ita, code: '' });
+  },
+  nou: (map) => {
+    map.delete('und');
+    map.set('nou', { value: MODIFIERS.nou, code: '' });
+  },
+  ruc: (map) => {
+    map.delete('uColor');
+    map.set('ruc', { value: MODIFIERS.ruc, code: '' });
+  },
+  nor: (map) => {
+    map.delete('bold');
+    map.delete('dim');
+    if (map.has('color') && map.get('color').dim) {
+      const obj = map.get('color');
+      map.set('color', { ...obj, value: obj.color, dim: false });
+    }
+    map.set('nor', { value: MODIFIERS.nor, code: '' });
+  },
+  dim: (map) => {
+    if (map.has('color')) {
+      const obj = map.get('color');
+      map.set('color', { ...obj, value: dimColor(obj.value), dim: true });
+    } else {
+      map.set('dim', { value: MODIFIERS.dim, code: '' });
+    }
+  },
+};
 
 export default function processStyles(styles: string) {
   const arr = styles.split('.');
   const map = new Map();
 
-  for (let i = 0; i < arr.length; i++) {
-    const style = arr[i] as string;
-
-    if (style === 'dfg') {
-      map.delete('color');
-      map.set('dfg', { value: MODIFIERS[style], code: '' });
-    }
-
-    if (colorKeys.includes(style)) {
-      map.delete('dfg');
-      let value;
-      if (map.has('color') && map.get('color').dim) {
-        value = dimColor(STANDARD_COLORS[style] as string);
-        map.set('color', {
-          value,
-          code: FG_CODE,
-          dim: true,
-          color: STANDARD_COLORS[style],
-        });
-        continue;
-      } else if (map.has('dim')) {
-        value = dimColor(STANDARD_COLORS[style] as string);
-        map.delete('dim');
-        map.set('color', {
-          value,
-          code: FG_CODE,
-          dim: true,
-          color: STANDARD_COLORS[style],
-        });
-        continue;
-      } else {
-        value = STANDARD_COLORS[style];
-      }
-      map.set('color', { value, code: FG_CODE, color: value });
+  for (const style of arr) {
+    // --- Paired Modifiers ---
+    if (style in pairedModifiers) {
+      map.delete(pairedModifiers[style]);
+      map.set(style, { value: MODIFIERS[style as keyof typeof MODIFIERS], code: '' });
       continue;
     }
 
-    if (style === 'dim') {
-      if (map.has('color')) {
-        const obj = map.get('color');
-        map.set('color', {
-          ...obj,
-          value: dimColor(obj.value),
-          dim: true,
-        });
-      } else {
-        map.set('dim', { value: MODIFIERS[style], code: '' });
-      }
-      continue;
-    }
-
-    if (style.startsWith('rgb')) {
-      const s = style
-        .slice(4, -1)
-        .split(',')
-        .map((v) => v.trim())
-        .join(';');
-
-      if (!s) {
-        continue;
-      }
-
-      map.delete('fg');
-      map.set('color', { value: s, code: FG_CODE });
-      continue;
-    }
-
-    if (style.startsWith('hex')) {
-      map.delete('fg');
-      const rgb = hexToRGB(style.slice(4, -1)).join(';');
-      map.set('color', {
-        value: rgb,
-        code: FG_CODE,
-      });
-      continue;
-    }
-
-    if (style.startsWith('bghex')) {
-      map.delete('bg');
-      const rgb = hexToRGB(style.slice(6, -1)).join(';');
-      map.set('bgcolor', {
-        value: rgb,
-        code: BG_CODE,
-      });
-      continue;
-    }
-
-    if (style.startsWith('bgrgb')) {
-      const s = style
-        .slice(6, -1)
-        .split(',')
-        .map((v) => v.trim())
-        .join(';');
-      if (!s) {
-        continue;
-      }
-      map.delete('fg');
-      map.set('bgcolor', {
-        value: s,
-        code: BG_CODE,
-      });
-      continue;
-    }
-
-    if (style.startsWith('bg') && colorKeys.includes(style.slice(2))) {
-      map.delete('bg');
-      map.set('bgcolor', {
-        value: STANDARD_COLORS[style.slice(2)],
-        code: BG_CODE,
-      });
-      continue;
-    }
-
-    if (style === 'dbg') {
-      map.delete('bgcolor');
-      map.set('dbg', { value: MODIFIERS[style], code: '' });
-    }
-
-    if (style === 'bol') {
-      map.delete('nor');
-      map.set('bold', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'res') {
-      map.clear();
-      map.set('reset', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'dfg') {
-      map.delete('color');
-      map.set('dfg', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'nor') {
-      map.delete('bold');
-      if (map.has('color') && map.get('color').dim) {
-        const obj = map.get('color');
-        map.set('color', {
-          ...obj,
-          value: obj.color,
-        });
-      }
-      map.set('nor', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'hid') {
-      map.delete('vis');
-      map.set('hid', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'vis') {
-      map.delete('hid');
-      map.set('vis', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'inv') {
-      map.delete('noi');
-      map.set('inv', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'noi') {
-      map.delete('inv');
-      map.set('noi', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'blk') {
-      map.delete('nob');
-      map.set('blk', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'nob') {
-      map.delete('blk');
-      map.set('nob', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'ovl') {
-      map.delete('noo');
-      map.set('ovl', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'noo') {
-      map.delete('ovl');
-      map.set('noo', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'str') {
-      map.delete('nos');
-      map.set('str', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'nos') {
-      map.delete('str');
-      map.set('nos', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style === 'ita') {
-      map.set('ita', { value: MODIFIERS[style], code: '' });
-      continue;
-    }
-
-    if (style.startsWith('urgb')) {
+    // --- Function-like styles ---
+    if (style.endsWith(')')) {
+      if (style.startsWith('rgb(')) {
+        const s = style.slice(4, -1).split(',').map((v) => v.trim()).join(';');
+        if (s) map.set('color', { value: s, code: FG_CODE });
+      } else if (style.startsWith('hex(')) {
+        const rgb = hexToRGB(style.slice(4, -1)).join(';');
+        map.set('color', { value: rgb, code: FG_CODE });
+      } else if (style.startsWith('bghex(')) {
+        const rgb = hexToRGB(style.slice(6, -1)).join(';');
+        map.set('bgcolor', { value: rgb, code: BG_CODE });
+      } else if (style.startsWith('bgrgb(')) {
+        const s = style.slice(6, -1).split(',').map((v) => v.trim()).join(';');
+        if (s) map.set('bgcolor', { value: s, code: BG_CODE });
+      } else if (style.startsWith('urgb(')) {
       const s = style
         .slice(5, -1)
         .split(',')
         .map((v) => v.trim())
         .join(':');
-      map.set('uColor', { value: s, code: UND_COLOR_CODE });
+        if (s) map.set('uColor', { value: s, code: UND_COLOR_CODE });
+      }
       continue;
     }
 
-    if (['und', 'dbu', 'cru', 'dou', 'dau'].includes(style)) {
+    // --- Simple Keywords ---
+    const keywordHandler = keywordHandlers[style];
+    if (keywordHandler) {
+      keywordHandler(map);
+      continue;
+    }
+
+    // --- Underline styles ---
+    if (underlineStyles.has(style)) {
       map.delete('nou');
-      map.set('und', {
-        value: MODIFIERS[style as keyof typeof MODIFIERS],
-        code: '',
-      });
+      map.set('und', { value: MODIFIERS[style], code: '' });
       continue;
     }
 
-    if (style === 'nou') {
-      map.delete('und');
-      map.set('nou', { value: MODIFIERS[style], code: '' });
+    // --- Foreground Color Keywords ---
+    if (colorKeySet.has(style)) {
+      map.delete('dfg');
+      const colorValue = STANDARD_COLORS[style];
+      if ((map.has('color') && map.get('color').dim) || map.has('dim')) {
+        const value = dimColor(colorValue);
+        map.delete('dim');
+        map.set('color', { value, code: FG_CODE, dim: true, color: colorValue });
+      } else {
+        map.set('color', { value: colorValue, code: FG_CODE, color: colorValue });
+      }
       continue;
     }
 
-    if (style === 'ruc') {
-      map.delete('uColor');
-      map.set('ruc', { value: MODIFIERS[style], code: '' });
+    // --- Background Color Keywords ---
+    if (style.startsWith('bg') && colorKeySet.has(style.slice(2))) {
+      map.set('bgcolor', { value: STANDARD_COLORS[style.slice(2)], code: BG_CODE });
       continue;
     }
 
-    if (style.startsWith('u') && colorKeys.includes(style.slice(1))) {
+    // --- Underline Color Keywords ---
+    if (style.startsWith('u') && colorKeySet.has(style.slice(1))) {
       map.set('uColor', {
         value: STANDARD_COLORS[style.slice(1)]?.replaceAll(';', ':'),
         code: UND_COLOR_CODE,
       });
+      continue;
     }
   }
 

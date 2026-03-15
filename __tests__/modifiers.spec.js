@@ -11,13 +11,13 @@ afterAll(() => {
 describe('Modifiers', () => {
   it('renders default style', () => {
     expect(style('$r{RED $res{Normal} RED}')).toEqual(
-      '\x1B[38;2;255;65;54mRED \x1B[0m\x1B[0mNormal\x1B[0m\x1B[38;2;255;65;54m RED\x1B[0m'
+      '\x1B[38;2;255;65;54mRED \x1B[0mNormal\x1B[0m\x1B[38;2;255;65;54m RED\x1B[0m'
     );
   });
 
   it('renders normal style', () => {
     expect(style('$bol{BOLD $nor{NORMAL} BOLD}')).toEqual(
-      '\x1B[1mBOLD \x1B[0m\x1B[22mNORMAL\x1B[0m\x1B[1m BOLD\x1B[0m'
+      '\x1B[1mBOLD \x1B[22mNORMAL\x1B[0m\x1B[1m BOLD\x1B[0m'
     );
   });
 
@@ -35,7 +35,7 @@ describe('Modifiers', () => {
 
   it('renders visible text inside hidden text', () => {
     expect(style('Email: $hid{user12345$vis{@example.com}}')).toEqual(
-      'Email: \u001B[8muser12345\u001B[0m\u001B[28m@example.com\u001B[0m\u001B[8m\u001B[0m'
+      'Email: \u001B[8muser12345\u001B[28m@example.com\u001B[0m\u001B[8m\u001B[0m'
     );
   });
 

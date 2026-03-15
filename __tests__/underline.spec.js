@@ -19,7 +19,7 @@ describe('Underline', () => {
     expect(
       style('$und{Straight $nou{(No underline here)}  underline}')
     ).toEqual(
-      '\u001B[4mStraight \u001B[0m\u001B[24m(No underline here)\u001B[0m\u001B[4m  underline\u001B[0m'
+      '\u001B[4mStraight \u001B[24m(No underline here)\u001B[0m\u001B[4m  underline\u001B[0m'
     );
   });
 
@@ -81,13 +81,13 @@ describe('Underline', () => {
     expect(
       style('$und.urgb(100,200,255){Straight underline $ug{RGB} colored}')
     ).toEqual(
-      '\u001B[4m\u001B[58:2:0:100:200:255mStraight underline \u001B[0m\u001B[4m\u001B[58:2:0:46:204:64mRGB\u001B[0m\u001B[4m\u001B[58:2:0:100:200:255m colored\u001B[0m'
+      '\u001B[4m\u001B[58:2:0:100:200:255mStraight underline \u001B[4m\u001B[58:2:0:46:204:64mRGB\u001B[0m\u001B[4m\u001B[58:2:0:100:200:255m colored\u001B[0m'
     );
   });
 
   it('renders default colored underline between blue colored text', () => {
     expect(style('$und.ub{Straight $ruc{underline reset} colored}')).toEqual(
-      '\u001B[4m\u001B[58:2:0:0:116:217mStraight \u001B[0m\u001B[4m\u001B[59munderline reset\u001B[0m\u001B[4m\u001B[58:2:0:0:116:217m colored\u001B[0m'
+      '\u001B[4m\u001B[58:2:0:0:116:217mStraight \u001B[4m\u001B[59munderline reset\u001B[0m\u001B[4m\u001B[58:2:0:0:116:217m colored\u001B[0m'
     );
   });
 });

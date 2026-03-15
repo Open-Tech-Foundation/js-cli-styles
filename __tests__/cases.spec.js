@@ -39,7 +39,7 @@ describe('cases', () => {
 
   it('renders simple nested colors', () => {
     expect(style('$r{red $g{green} red}')).toEqual(
-      '\x1B[38;2;255;65;54mred \x1B[0m\x1B[38;2;46;204;64mgreen\x1B[0m\x1B[38;2;255;65;54m red\x1B[0m'
+      '\x1B[38;2;255;65;54mred \x1B[38;2;46;204;64mgreen\x1B[0m\x1B[38;2;255;65;54m red\x1B[0m'
     );
   });
 

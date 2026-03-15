@@ -20,7 +20,7 @@
     "url": "https://thanga-ganapathy.github.io"
   },
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/open-tech-foundation/js-cli-styles",
   "repository": "git@github.com:Open-Tech-Foundation/js-cli-styles.git",
   "type": "module",
   "exports": {
@@ -39,6 +39,7 @@
     "test": "jest",
     "lint": "eslint src/** --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "bench": "node --expose-gc bench/comparison.js",
     "type-check": "tsc",
     "ci": "turbo run build test lint type-check",
     "prepare": "husky install",
@@ -50,7 +51,7 @@
       "pnpm run lint"
     ],
     "*.json": [
-      "npm run format"
+      "pnpm run format"
     ]
   },
   "files": [
@@ -63,6 +64,9 @@
     "@opentf/eslint-config-base": "^0.2.0",
     "@swc/core": "^1.4.8",
     "@swc/jest": "^0.2.24",
+    "ansi-colors": "^4.1.3",
+    "ansis": "^3.3.2",
+    "chalk": "^5.3.0",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.12.2",
     "eslint": "^8.57.0",
@@ -70,7 +74,10 @@
     "html-entities": "^2.5.2",
     "husky": "^9.0.11",
     "jest": "^29.7.0",
+    "kleur": "^4.1.5",
     "lint-staged": "^15.2.2",
+    "picocolors": "^1.0.1",
+    "tinybench": "^2.8.0",
     "tsup": "^8.0.2",
     "turbo": "^1.13.0",
     "typescript": "^5.4.3"

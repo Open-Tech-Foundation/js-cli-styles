@@ -181,7 +181,7 @@ describe('colors', () => {
         "$bgbl.b{THE QUICK $g{BROWN $r{CAT} JUMPED} OVER THE LAZY $r{DOG}'S BACK}"
       )
     ).toEqual(
-      "\x1B[48;2;17;17;17m\x1B[38;2;0;116;217mTHE QUICK \x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;46;204;64mBROWN \x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;255;65;54mCAT\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;46;204;64m JUMPED\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;0;116;217m OVER THE LAZY \x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;255;65;54mDOG\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;0;116;217m'S BACK\x1B[0m"
+      "\x1B[48;2;17;17;17m\x1B[38;2;0;116;217mTHE QUICK \x1B[48;2;17;17;17m\x1B[38;2;46;204;64mBROWN \x1B[48;2;17;17;17m\x1B[38;2;255;65;54mCAT\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;46;204;64m JUMPED\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;0;116;217m OVER THE LAZY \x1B[48;2;17;17;17m\x1B[38;2;255;65;54mDOG\x1B[0m\x1B[48;2;17;17;17m\x1B[38;2;0;116;217m'S BACK\x1B[0m"
     );
   });
 
@@ -234,13 +234,13 @@ describe('colors', () => {
 
   it('renders default fg color within red color', () => {
     expect(style('$r{Straight $dfg{sometext} underline}')).toEqual(
-      '\u001B[38;2;255;65;54mStraight \u001B[0m\u001B[39msometext\u001B[0m\u001B[38;2;255;65;54m underline\u001B[0m'
+      '\u001B[38;2;255;65;54mStraight \u001B[39msometext\u001B[0m\u001B[38;2;255;65;54m underline\u001B[0m'
     );
   });
 
   it('renders default bg color within yellow bg color text', () => {
     expect(style('$bgy{Straight $dbg{some text} underline}')).toEqual(
-      '\u001B[48;2;255;220;0mStraight \u001B[0m\u001B[49msome text\u001B[0m\u001B[48;2;255;220;0m underline\u001B[0m'
+      '\u001B[48;2;255;220;0mStraight \u001B[49msome text\u001B[0m\u001B[48;2;255;220;0m underline\u001B[0m'
     );
   });
 });

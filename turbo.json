@@ -5,7 +5,8 @@
       "outputs": ["dist/**"]
     },
     "lint": {},
-    "test": {}
+    "test": {},
+    "bench": {}
   },
   "globalEnv": ["FORCE_COLOR", "NO_COLOR", "COLORTERM"]
 }

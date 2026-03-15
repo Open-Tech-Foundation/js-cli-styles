@@ -68,11 +68,13 @@ bench
   .add(
     'kleur - nested',
     () =>
-      kleur.bgBlack().blue(
-        `THE QUICK ${kleur.green(
-          `BROWN ${kleur.red('CAT')} JUMPED`
-        )} OVER THE LAZY ${kleur.red("DOG'S BACK")}`
-      ),
+      kleur
+        .bgBlack()
+        .blue(
+          `THE QUICK ${kleur.green(
+            `BROWN ${kleur.red('CAT')} JUMPED`
+          )} OVER THE LAZY ${kleur.red("DOG'S BACK")}`
+        ),
     memoryHooks
   )
   .add(

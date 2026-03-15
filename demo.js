@@ -109,7 +109,7 @@ print(
 
 console.log('\n--- Compiled Performance Example ---');
 const compiled = compile(
-  '$bgbl.b{THE QUICK $g{BROWN $r.bol{CAT} JUMPED} OVER THE LAZY $r.bol{DOG}\'S BACK}'
+  "$bgbl.b{THE QUICK $g{BROWN $r.bol{CAT} JUMPED} OVER THE LAZY $r.bol{DOG}'S BACK}"
 );
 
 console.log('\nRunning compiled function 100,000 times to show speed...');

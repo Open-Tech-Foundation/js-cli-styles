@@ -58,11 +58,13 @@ bench
     );
   })
   .add('kleur - nested', () => {
-    kleur.bgBlack().blue(
-      `THE QUICK ${kleur.green(
-        `BROWN ${kleur.red('CAT')} JUMPED`
-      )} OVER THE LAZY ${kleur.red("DOG'S BACK")}`
-    );
+    kleur
+      .bgBlack()
+      .blue(
+        `THE QUICK ${kleur.green(
+          `BROWN ${kleur.red('CAT')} JUMPED`
+        )} OVER THE LAZY ${kleur.red("DOG'S BACK")}`
+      );
   })
   .add('ansis - nested', () => {
     ansis.bgBlack.blue(
@@ -90,8 +92,8 @@ bench
 await bench.run();
 
 // Format + print results
-const table = bench.table().filter(
-  (row) => row && row['Task Name'] && row['Task Name'] !== '---'
-);
+const table = bench
+  .table()
+  .filter((row) => row && row['Task Name'] && row['Task Name'] !== '---');
 
 console.table(table);

@@ -104,7 +104,10 @@ export function compile(template: string): (color: boolean) => string {
   return renderer;
 }
 
-export default function style(str: string, options: { color?: boolean } = {}): string {
+export default function style(
+  str: string,
+  options: { color?: boolean } = {}
+): string {
   const opts = { color: true, ...options };
 
   if (opts.color) {
